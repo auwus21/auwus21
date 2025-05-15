@@ -14,9 +14,9 @@
 | 🧾 **Bot de WhatsApp para registrar gastos** | Recibe tickets por WhatsApp (texto o imagen), los analiza con IA y los carga en Google Sheets. | `whatsapp-web.js`, `Tesseract.js`, `Google Sheets API`, `Gemini`, `Node.js` |
 | 📦 **Gestor de Pedidos para Empleados** | Sistema de consulta y avisos por WhatsApp que avisa automáticamente a empleados cuándo llegan productos. | `Node.js`, `Google Sheets`, `Railway` |
 | 🎰 **Ruleta React Promocional** | Ruleta de premios para ecommerce que integra formulario, animación y efectos visuales. | `React`, `Tailwind CSS`, `Confetti.js`, `useState`, `Vite` |
+| 📦 **[Seguimiento de envíos para clientes](https://tracking-tecstore.vercel.app/)** | Web donde el cliente puede consultar el estado de su pedido ingresando el número. Totalmente integrado con Google Sheets. | `React`, `Vite`, `Tailwind CSS`, `Google Sheets API` |
 | 🛒 **Sitio web para mi tienda [Tec Store Argentina](https://tecstorearg.com/)** | Desarrollado con Shopify y conectado a un sistema en Google Sheets para manejar stock, precios y logística en tiempo real. | `Shopify`, `Google Sheets`, `App Scripts`, `E-commerce` |
 
----
 
 ## 📷 Portfolio visual
 
