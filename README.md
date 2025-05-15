@@ -11,7 +11,7 @@
 
 | Proyecto | Descripción | Tecnologías |
 |----------|-------------|-------------|
-| 🧾 [**Bot de WhatsApp para registrar gastos**](https://github.com/auwuus21/whatsapp-ticket-bot) |
+| 🧾 [**Bot de WhatsApp para registrar gastos**](https://github.com/auwus21/auwus21/edit/main/README.md) |
  Recibe tickets por WhatsApp (texto o imagen), los analiza con IA y los carga en Google Sheets. | `whatsapp-web.js`, `Tesseract.js`, `Google Sheets API`, `Gemini`, `Node.js` |
 | 📦 **Gestor de Pedidos para Empleados** | Sistema de consulta y avisos por WhatsApp que avisa automáticamente a empleados cuándo llegan productos. | `Node.js`, `Google Sheets`, `Railway` |
 | 🎰 **Ruleta React Promocional** | Ruleta de premios para ecommerce que integra formulario, animación y efectos visuales. | `React`, `Tailwind CSS`, `Confetti.js`, `useState`, `Vite` |
