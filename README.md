@@ -1,4 +1,4 @@
-<h1 align="center">👋 ¡Hola! Soy Agus Olthoff</h1>
+<h1 align="center">👋 ¡Hola! Soy Agustín Olthoff</h1>
 
 <p align="center">
   Desarrollador · Emprendedor · Estudiante de Sistemas <br>
@@ -11,10 +11,10 @@
 
 | Proyecto | Descripción | Tecnologías |
 |----------|-------------|-------------|
-| 🧾 **Bot de WhatsApp para registrar gastos** | Recibe tickets por WhatsApp (texto o imagen), los analiza con IA y los carga en un dashboard de Google Sheets. | `whatsapp-web.js`, `Tesseract.js`, `Google Sheets API`, `Gemini`, `Node.js` |
+| 🧾 **Bot de WhatsApp para registrar gastos** | Recibe tickets por WhatsApp (texto o imagen), los analiza con IA y los carga en Google Sheets. | `whatsapp-web.js`, `Tesseract.js`, `Google Sheets API`, `Gemini`, `Node.js` |
 | 📦 **Gestor de Pedidos para Empleados** | Sistema de consulta y avisos por WhatsApp que avisa automáticamente a empleados cuándo llegan productos. | `Node.js`, `Google Sheets`, `Railway` |
 | 🎰 **Ruleta React Promocional** | Ruleta de premios para ecommerce que integra formulario, animación y efectos visuales. | `React`, `Tailwind CSS`, `Confetti.js`, `useState`, `Vite` |
-| 📊 **Dashboard de Gastos Mensuales** | Visualización en tiempo real de los tickets del bot. Incluye filtros por mes, gráficos y análisis. | `Google Sheets`, `Fórmulas`, `Gráficos` |
+| 🛒 **Sitio web para mi tienda [Tec Store Argentina](https://tecstorearg.com/)** | Desarrollado con Shopify y conectado a un sistema en Google Sheets para manejar stock, precios y logística en tiempo real. | `Shopify`, `Google Sheets`, `App Scripts`, `E-commerce` |
 
 ---
 
@@ -22,26 +22,36 @@
 
 <p align="center">
   <img src="./images/bot-demo.gif" width="350" />
-  <img src="./images/dashboard-preview.png" width="350" />
+  <img src="./images/ruleta-demo.png" width="350" />
 </p>
+
+---
+
+## 🧠 Sobre mí
+
+- 👨‍💼 Actual dueño de [**Tec Store Argentina**](https://www.instagram.com/tecstore.arg/) (desde 2024), una de las tiendas tech más importantes de Argentina con **más de 300.000 seguidores** en Instagram.
+- 🧾 Especializado en automatizaciones para **ventas, logística y finanzas**.
+- 📊 Manejo avanzado de **Google Sheets**, **Google Apps Script** y flujos de trabajo automatizados.
+- 💡 Aplico tecnología real para resolver problemas de negocios: desde bots hasta dashboards en tiempo real.
 
 ---
 
 ## 📚 Formación
 
-🎓 Estudiante de Licenciatura en Sistemas en [Universidad Nacional de La Plata](https://www.unlp.edu.ar)  
-📌 Enfocado en desarrollo backend, automatizaciones y herramientas prácticas para negocios.
+🎓 Estudiante de Licenciatura en Sistemas  
+📌 Enfocado en desarrollo backend, automatizaciones y herramientas prácticas para ecommerce y gestión empresarial.
 
 ---
 
 ## 📬 Contacto
 
-- 📧 Email: agustin.tuemail@gmail.com  
-- 💼 LinkedIn: [linkedin.com/in/agusolthoff](https://linkedin.com/in/agusolthoff)  
-- 🌐 [Tu tienda Tec Store](https://instagram.com/tuinsta)  
-- ☁️ Deploys en Railway, Vercel y GitHub Pages
+- 📧 Email: agusolthoff2002@gmail.com  
+- 💼 LinkedIn: [linkedin.com/in/agustin-olthoff-961147272](https://www.linkedin.com/in/agustin-olthoff-961147272/)  
+- 🛒 Web: [https://tecstorearg.com](https://tecstorearg.com)  
+- 📱 Instagram: [@tecstore.arg](https://www.instagram.com/tecstore.arg/)
 
 ---
 
 > 💬 *“No se trata solo de programar, sino de resolver problemas reales.”*
+
 
