@@ -21,9 +21,11 @@
 ## 📷 Portfolio visual
 
 <p align="center">
-  <img src="./images/bot-demo.gif" width="350" />
-  <img src="./images/ruleta-demo.png" width="350" />
+  <img src="./images/bot-ticket-wsp-demo-optimized.gif" width="600"/>
 </p>
+
+<p align="center"><strong>🧾 Bot de WhatsApp para registrar gastos</strong></p>
+
 
 ---
 
