@@ -5,7 +5,6 @@
   🎯 Automatizando con bots, APIs y Google Sheets.
 </p>
 
----
 ## 🚀 Proyectos destacados
 
 | Proyecto | Descripción | Tecnologías |
@@ -13,7 +12,7 @@
 | 🧾 [**Bot de WhatsApp para registrar gastos**](https://github.com/auwus21/whatsapp-ticket-bot) | Recibe tickets por WhatsApp (texto o imagen), los analiza con IA y los carga en Google Sheets. | `whatsapp-web.js`, `Tesseract.js`, `Google Sheets API`, `Gemini`, `Node.js` |
 | 📦 [**Gestor de Pedidos para Empleados**](https://github.com/auwus21/whatsapp-pedidos-empleados) | Sistema de consulta y avisos por WhatsApp que avisa automáticamente a empleados cuándo llegan productos o hay saldo pendiente. | `Node.js`, `Google Sheets`, `Railway`, `whatsapp-web.js` |
 | 🎰 [**Ruleta React Promocional**](https://github.com/auwus21/ruleta-promocional-react) | Ruleta interactiva para campañas promocionales. Valida código + pedido, muestra premios animados y registra todo automáticamente en Google Sheets. | `React`, `Vite`, `Tailwind CSS`, `canvas-confetti`, `Framer Motion`, `Google Sheets API`, `Node.js` |
-📦 [**Seguimiento de envíos para clientes**](https://github.com/auwus21/tracking-tecstore)** | Web donde el cliente puede consultar el estado de su pedido ingresando el número. Totalmente integrado con Google Sheets. | `React`, `Vite`, `Tailwind CSS`, `Google Sheets API` |
+| 📦 [**Seguimiento de envíos para clientes**](https://github.com/auwus21/tracking-tecstore-md) | Web donde el cliente puede consultar el estado de su pedido ingresando el número. Totalmente integrado con Google Sheets y animaciones de progreso. | `React`, `Vite`, `Tailwind CSS`, `Google Sheets API`, `Framer Motion` |
 | 🛒 **Sitio web para mi tienda [Tec Store Argentina](https://tecstorearg.com/)** | Desarrollado con Shopify y conectado a un sistema en Google Sheets para manejar stock, precios y logística en tiempo real. | `Shopify`, `Google Sheets`, `App Scripts`, `E-commerce` |
 
 
