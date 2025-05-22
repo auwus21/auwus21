@@ -1,3 +1,13 @@
+<p align="center">
+  <a href="https://portfolio-agustin-olthoff.vercel.app/" target="_blank">
+    <img src="https://portfolio-agustin-olthoff.vercel.app/preview.png" alt="Preview de portfolio" width="800"/>
+  </a>
+</p>
+
+<p align="center">
+  <a href="https://portfolio-agustin-olthoff.vercel.app/" target="_blank"><strong>🌐 portfolio-agustin-olthoff.vercel.app →</strong></a>
+</p>
+
 <h1 align="center">👋 ¡Hola! Soy Agustín Olthoff</h1>
 
 <p align="center">
