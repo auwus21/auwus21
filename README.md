@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://portfolio-agustin-olthoff.vercel.app/" target="_blank">
-    <img src="https://portfolio-agustin-olthoff.vercel.app/preview.png" alt="Preview de portfolio" width="800"/>
+    <img src="./images/preview.png" alt="Preview de portfolio" width="800"/>
   </a>
 </p>
 
