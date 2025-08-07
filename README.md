@@ -25,6 +25,12 @@
 | 📦 [**Seguimiento de envíos para clientes**](https://github.com/auwus21/tracking-tecstore-md) | Web donde el cliente puede consultar el estado de su pedido ingresando el número. Totalmente integrado con Google Sheets y animaciones de progreso. | `React`, `Vite`, `Tailwind CSS`, `Google Sheets API`, `Framer Motion` |
 | 🛒 **Sitio web para mi tienda [Tec Store Argentina](https://tecstorearg.com/)** | Desarrollado con Shopify y conectado a un sistema en Google Sheets para manejar stock, precios y logística en tiempo real. | `Shopify`, `Google Sheets`, `App Scripts`, `E-commerce` |
 
+### 🎓 Proyectos de la facultad
+
+| Proyecto | Descripción | Tecnologías |
+|----------|-------------|-------------|
+| 🧾 [Marketplace Descentralizado](https://github.com/TP-Seminario-de-Lenguajes-Rust-2025/marketplacedescentralizado) | Plataforma de e-commerce sobre blockchain desarrollada en Rust. Permite publicar, comprar y calificar productos mediante contratos inteligentes. | Rust, Ink!, Substrate, Blockchain |
+
 
 
 ## 📷 Portfolio visual
