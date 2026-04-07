@@ -1,8 +1,8 @@
-<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=0:0D1117,50:161B22,100:0D1117&height=220&section=header&text=Agustín%20Olthoff&fontColor=58A6FF&fontSize=42&fontAlignY=35&desc=Software%20Developer%20·%20Entrepreneur%20·%20Systems%20Engineering&descAlignY=55&descSize=16&descColor=8B949E&animation=fadeIn"/>
+<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=0:0D1117,50:161B22,100:0D1117&height=220&section=header&text=Agustín%20Olthoff&fontColor=58A6FF&fontSize=42&fontAlignY=35&desc=Desarrollador%20Software%20·%20Emprendedor%20·%20Estudiante%20de%20Sistemas&descAlignY=55&descSize=16&descColor=8B949E&animation=fadeIn"/>
 
 <div align="center">
 
-[![Typing SVG](https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=22&duration=3000&pause=1000&color=58A6FF&center=true&vCenter=true&multiline=true&repeat=true&width=650&height=50&lines=Building+real-world+systems+that+power+real+businesses+%F0%9F%9A%80)](https://git.io/typing-svg)
+[![Typing SVG](https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=22&duration=3000&pause=1000&color=58A6FF&center=true&vCenter=true&multiline=true&repeat=true&width=650&height=50&lines=Construyendo+sistemas+reales+que+mueven+negocios+reales+%F0%9F%9A%80)](https://git.io/typing-svg)
 
 <br>
 
@@ -24,23 +24,18 @@
 
 <br><br>
 
-<img src="https://komarev.com/ghpvc/?username=auwus21&label=Profile%20Views&color=58A6FF&style=flat-square" alt="Profile views" />
+<img src="https://komarev.com/ghpvc/?username=auwus21&label=Visitas%20al%20perfil&color=58A6FF&style=flat-square" alt="Visitas al perfil" />
 
 </div>
 
 ---
 
-## 🧠 About Me
+## 🧠 Sobre mí
 
-```javascript
-const agustin = {
-    role: "Software Developer & Entrepreneur",
-    company: "TecStore Argentina — 300K+ followers on Instagram",
-    education: "Licenciatura en Sistemas (in progress)",
-    focus: ["Business Automation", "E-commerce Infrastructure", "Real-time Systems"],
-    philosophy: "I don't just write code — I build the engines that run businesses."
-};
-```
+- 👨‍💼 Actual dueño de [**Tec Store Argentina**](https://www.instagram.com/tecstore.arg/) (desde 2024), una de las tiendas tech líderes de Argentina con **+300.000 seguidores** en Instagram.
+- 🧩 Poseo un perfil híbrido: desarrollo soluciones técnicas enfocadas al **escalado del negocio real**.
+- 🧾 Especialista en automatización, logística, sincronización cross-plataforma (Shopify / ML) y dashboards de administración B2B/B2C.
+- 💡 Estudiante de la Licenciatura en Sistemas.
 
 <br>
 
@@ -49,15 +44,9 @@ const agustin = {
   <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=auwus21&layout=compact&theme=github_dark&hide_border=true&bg_color=0D1117&title_color=58A6FF&text_color=C9D1D9" alt="Top Langs" height="180"/>
 </div>
 
-<br>
-
-<div align="center">
-  <img src="https://github-readme-activity-graph.vercel.app/graph?username=auwus21&bg_color=0D1117&color=58A6FF&line=58A6FF&point=C9D1D9&area=true&area_color=161B22&hide_border=true" width="95%" alt="Activity Graph"/>
-</div>
-
 ---
 
-## ⚡ Tech Stack
+## ⚡ Tecnologías
 
 <div align="center">
   <a href="https://skillicons.dev">
@@ -67,7 +56,7 @@ const agustin = {
 
 ---
 
-## 🚀 Featured Projects
+## 🚀 Proyectos Destacados
 
 <br>
 
@@ -89,11 +78,9 @@ const agustin = {
 
 </div>
 
-> A **real-time interactive simulation engine** for CPU scheduling algorithms (FCFS, SJF, Round Robin, Priority). Designed as an educational tool, it features a fully reactive interface for customizing burst times, arrival times, and priorities — complete with a **dynamic Gantt chart** and live performance metrics. Deployed on GitHub Pages.
+> **Motor de simulación interactivo en tiempo real** para algoritmos de planificación de CPU (FCFS, SJF, Round Robin, Priority). Diseñado como herramienta educativa, ofrece una interfaz completamente reactiva para personalizar ráfagas, tiempos de llegada y prioridades — con un **diagrama de Gantt dinámico** y métricas de rendimiento en vivo. Desplegado en GitHub Pages.
 
 <br>
-
-<img width="100%" src="https://github.com/auwus21/auwus21/raw/main/.github/divider.png" onerror="this.style.display='none'"/>
 
 ---
 
@@ -109,7 +96,7 @@ const agustin = {
 
 <div align="center">
 
-### 📈 [`Institutional Trading Architecture`](https://github.com/auwus21/BotTrading)
+### 📈 [`Arquitectura de Trading Institucional`](https://github.com/auwus21/BotTrading)
 
 ![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
 ![React](https://img.shields.io/badge/React-20232A?style=flat-square&logo=react&logoColor=61DAFB)
@@ -117,11 +104,9 @@ const agustin = {
 
 </div>
 
-> An **algorithmic trading automation system** with a multi-profile architecture and institutional-grade risk management. The Python backend handles metric calculations and strict risk controls, while the React frontend dashboard provides real-time data flow monitoring and hot-swappable configurations — including **Factory Reset** capabilities without compromising operational uptime.
+> **Sistema de automatización de trading algorítmico** con arquitectura multi-perfil y gestión de riesgos de grado institucional. El backend en Python maneja cálculos métricos y controles estrictos de riesgo, mientras que el dashboard frontend en React provee monitoreo del flujo de datos en tiempo real y configuraciones intercambiables en caliente — incluyendo funcionalidades de **Factory Reset** sin comprometer el uptime operativo.
 
 <br>
-
-<img width="100%" src="https://github.com/auwus21/auwus21/raw/main/.github/divider.png" onerror="this.style.display='none'"/>
 
 ---
 
@@ -142,15 +127,15 @@ const agustin = {
 ![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=nodedotjs&logoColor=white)
 ![Google Apps Script](https://img.shields.io/badge/Apps%20Script-4285F4?style=flat-square&logo=google&logoColor=white)
 ![Shopify](https://img.shields.io/badge/Shopify-96BF48?style=flat-square&logo=shopify&logoColor=white)
-![Private](https://img.shields.io/badge/Status-Private%20Enterprise-red?style=flat-square&logo=lock&logoColor=white)
+![Private](https://img.shields.io/badge/Estado-Privado%20Empresarial-red?style=flat-square&logo=lock&logoColor=white)
 
 </div>
 
-> A proprietary **B2B operations infrastructure** powering [TecStore Argentina](https://tecstorearg.com/) — one of Argentina's leading tech e-commerce brands with **300K+ followers**. The ecosystem automates financial management (automated accruals, penalty tracking, partner interest calculations), intelligent logistics (multi-node tracking with WhatsApp push notifications), and a **serverless inventory syncer** that routes stock between Shopify & MercadoLibre bypassing WAF restrictions.
+> **Infraestructura propietaria de operaciones B2B** que impulsa [TecStore Argentina](https://tecstorearg.com/) — una de las marcas líderes de e-commerce tech en Argentina con **+300K seguidores**. El ecosistema automatiza la gestión financiera (asientos automáticos, seguimiento de penalidades, cálculo de intereses entre socios), logística inteligente (tracking multi-nodo con notificaciones push vía WhatsApp) y un **syncer de inventario serverless** que enruta stock entre Shopify y MercadoLibre evitando restricciones WAF.
 
 <div align="center">
 
-**[📄 Read the Full Technical Case Study →](./TecStore-CaseStudy.md)**
+**[📄 Leer el Caso de Estudio Técnico Completo →](./TecStore-CaseStudy.md)**
 
 </div>
 
@@ -158,20 +143,20 @@ const agustin = {
 
 ---
 
-## 📦 Other Projects
+## 📦 Otros Proyectos
 
 <details>
-<summary><b>🔍 Click to expand</b></summary>
+<summary><b>🔍 Click para expandir</b></summary>
 <br>
 
-| | Project | Description | Stack |
+| | Proyecto | Descripción | Stack |
 |:-:|---------|-------------|-------|
-| 🧾 | [**WhatsApp Expense Tracker**](https://github.com/auwus21/whatsapp-ticket-bot) | Receives receipts via WhatsApp (text or image), analyzes them with AI (Gemini + OCR), and auto-logs expenses to Google Sheets. | `Node.js` `Gemini` `Tesseract.js` |
-| 📦 | [**Employee Order Manager**](https://github.com/auwus21/whatsapp-pedidos-empleados) | Automated WhatsApp notification system that alerts employees about product arrivals and pending balances. | `Node.js` `Google Sheets` `Railway` |
-| 🎰 | [**Promo Roulette**](https://github.com/auwus21/ruleta-promocional-react) | Interactive promotional roulette wheel with code validation, animated prizes, and auto-logging to database. | `React` `Vite` `Tailwind` `Framer Motion` |
-| 📍 | [**Live Shipment Tracker**](https://github.com/auwus21/tracking-tecstore-md) | Public-facing web app where customers track their orders in real-time against the logistics warehouse. | `React` `Vite` `Framer Motion` |
-| ⛓️ | [**Decentralized Marketplace**](https://github.com/TP-Seminario-de-Lenguajes-Rust-2025/marketplacedescentralizado) | Web3 e-commerce platform on blockchain with smart contracts for reputation scoring and user profiles. | `Rust` `Ink!` `Substrate` |
-| 🛒 | [**TecStore Website**](https://tecstorearg.com/) | Full e-commerce storefront connected to real-time logistics and inventory microservices. | `Shopify` `Google Apps Script` |
+| 🧾 | [**Bot de WhatsApp para registrar gastos**](https://github.com/auwus21/whatsapp-ticket-bot) | Recibe tickets por WhatsApp (texto o imagen), los analiza con IA (Gemini + OCR) y los carga automáticamente en Google Sheets. | `Node.js` `Gemini` `Tesseract.js` |
+| 📦 | [**Gestor de Pedidos para Empleados**](https://github.com/auwus21/whatsapp-pedidos-empleados) | Sistema automatizado de notificaciones por WhatsApp que avisa a empleados sobre llegada de productos y saldos pendientes. | `Node.js` `Google Sheets` `Railway` |
+| 🎰 | [**Ruleta Promocional**](https://github.com/auwus21/ruleta-promocional-react) | Ruleta interactiva para campañas promocionales con validación de código, premios animados y registro automatizado en DB. | `React` `Vite` `Tailwind` `Framer Motion` |
+| 📍 | [**Seguimiento de Envíos**](https://github.com/auwus21/tracking-tecstore-md) | App web pública donde los clientes rastrean sus pedidos en tiempo real contra el warehouse logístico. | `React` `Vite` `Framer Motion` |
+| ⛓️ | [**Marketplace Descentralizado**](https://github.com/TP-Seminario-de-Lenguajes-Rust-2025/marketplacedescentralizado) | Plataforma Web3 de e-commerce sobre blockchain con contratos inteligentes de calificación y perfiles de usuario. | `Rust` `Ink!` `Substrate` |
+| 🛒 | [**Sitio Web TecStore**](https://tecstorearg.com/) | E-commerce completo conectado a microservicios de logística e inventario en tiempo real. | `Shopify` `Google Apps Script` |
 
 </details>
 
@@ -181,7 +166,7 @@ const agustin = {
 
 <br>
 
-*"I don't just write code — I build the infrastructure that makes businesses run."*
+*"No se trata solo de programar, sino de construir la infraestructura que hace funcionar los negocios."*
 
 <br>
 

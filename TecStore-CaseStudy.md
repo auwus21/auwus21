@@ -1,8 +1,8 @@
-<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=0:0D1117,50:161B22,100:0D1117&height=180&section=header&text=TecStore%20Backoffice&fontColor=58A6FF&fontSize=36&fontAlignY=35&desc=Technical%20Case%20Study%20%E2%80%94%20Private%20Enterprise%20Software&descAlignY=55&descSize=14&descColor=8B949E&animation=fadeIn"/>
+<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=0:0D1117,50:161B22,100:0D1117&height=180&section=header&text=TecStore%20Backoffice&fontColor=58A6FF&fontSize=36&fontAlignY=35&desc=Caso%20de%20Estudio%20T%C3%A9cnico%20%E2%80%94%20Software%20Privado%20Empresarial&descAlignY=55&descSize=14&descColor=8B949E&animation=fadeIn"/>
 
 <div align="center">
 
-![Private](https://img.shields.io/badge/Status-Private%20Enterprise-red?style=for-the-badge&logo=lock&logoColor=white)
+![Privado](https://img.shields.io/badge/Estado-Privado%20Empresarial-red?style=for-the-badge&logo=lock&logoColor=white)
 ![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
 ![Google Apps Script](https://img.shields.io/badge/Apps%20Script-4285F4?style=for-the-badge&logo=google&logoColor=white)
 ![Shopify](https://img.shields.io/badge/Shopify-96BF48?style=for-the-badge&logo=shopify&logoColor=white)
@@ -10,83 +10,83 @@
 </div>
 
 > [!NOTE]
-> This project is **closed-source** due to internal business security policies at TecStore Argentina. This document serves as an illustrative overview of the architecture, systems, and problems solved.
+> Este proyecto es de **código cerrado** por políticas de seguridad interna de TecStore Argentina. Este documento sirve como una vista ilustrativa de la arquitectura, los sistemas y los problemas resueltos.
 
 ---
 
 ## 🏢 Overview
 
-**TecStore** is a comprehensive internal technology platform built from the ground up to manage and optimize the entire operational, financial, and logistics infrastructure of *TecStore Argentina* — one of the country's leading tech e-commerce brands with **300,000+ followers on Instagram**.
+**TecStore** es una plataforma tecnológica integral construida desde cero para gestionar y optimizar toda la infraestructura operativa, financiera y logística de *TecStore Argentina* — una de las marcas líderes de e-commerce tech del país con **+300.000 seguidores en Instagram**.
 
-The system centralizes multiple sources of truth that would otherwise be scattered across spreadsheets, manual processes, and disconnected tools — transforming them into a unified, automated operations hub.
+El sistema centraliza múltiples fuentes de verdad que de otro modo estarían dispersas entre planillas, procesos manuales y herramientas desconectadas — transformándolas en un hub de operaciones unificado y automatizado.
 
 ---
 
-## 🏗️ Architecture & Technologies
+## 🏗️ Arquitectura y Tecnologías
 
 ```
 ┌─────────────────────────────────────────────────┐
-│                  FRONTEND LAYER                  │
-│          React Admin Dashboards (Custom)         │
+│                CAPA FRONTEND                     │
+│        React Admin Dashboards (Custom)           │
 ├──────────────────┬──────────────────────────────┤
 │                  │                               │
-│   BACKEND CORE   │     INTEGRATIONS LAYER        │
+│   BACKEND CORE   │     CAPA DE INTEGRACIONES     │
 │   Node.js        │     Shopify API               │
 │   Google Apps    │     MercadoLibre API           │
 │   Script         │     WhatsApp Business (BaaS)   │
-│                  │     Serverless Proxy           │
+│                  │     Proxy Serverless           │
 ├──────────────────┴──────────────────────────────┤
-│                  DATA LAYER                      │
-│   Google Sheets (Operational Data Warehouse)     │
-│   Transactional Cache DBs                        │
+│                  CAPA DE DATOS                   │
+│   Google Sheets (Data Warehouse Operativo)       │
+│   Bases de Datos Transaccionales (Caché)         │
 └─────────────────────────────────────────────────┘
 ```
 
 ---
 
-## ⚙️ Core Modules
+## ⚙️ Módulos de Operación
 
-### 💰 Financial Engine — "Caja Parada" System
+### 💰 Motor Financiero — Sistema de "Caja Parada"
 
-A sophisticated daily-ledger financial engine designed to audit partner accounts with precision:
+Un sofisticado motor de asientos diarios diseñado para auditar las cuentas de los socios con precisión:
 
-- **Daily balance tracking** across positive and negative (debtor) states
-- **Dynamic recalculation scripts** supporting both compound and simple interest models
-- **Immutable penalty records** and automated "Intereses a Pagar" accruals triggered on idle-cash conditions
-- Seamless integration with the accounting dashboard for real-time visibility
+- **Seguimiento de saldos diario** con estados positivos y negativos (deudores)
+- **Scripts de recálculo dinámico** soportando modelos de interés compuesto y simple
+- **Registros inmutables de penalidades** y devengamientos automáticos de "Intereses a Pagar" activados en condiciones de caja inactiva
+- Integración directa con el dashboard contable para visibilidad en tiempo real
 
-### 🚚 Intelligent Logistics Module
+### 🚚 Módulo de Logística Inteligente
 
-End-to-end logistics management powering both the internal operations team and customer-facing experiences:
+Gestión logística de punta a punta que impulsa tanto las operaciones internas como la experiencia del cliente:
 
-- **Bulk status management panel** — backoffice tool for mass-updating shipment states across hundreds of active orders
-- **WhatsApp push automations** — instant notifications to employees on arrivals and to customers on status changes
-- **Public tracking platform** — a React-powered web app where customers enter a tracking code and see animated progress bars synced to the logistics database in real time
+- **Panel de gestión masiva de estados** — herramienta de backoffice para actualización masiva de estados de envío de cientos de pedidos activos
+- **Automatizaciones push por WhatsApp** — notificaciones instantáneas a empleados sobre llegadas y a clientes sobre cambios de estado
+- **Plataforma pública de tracking** — una web app en React donde los clientes ingresan un código de seguimiento y ven barras de progreso animadas sincronizadas a la base logística en tiempo real
 
-### 🔄 Cross-Platform Inventory Syncer
+### 🔄 Syncer de Inventario Cross-Plataforma
 
-A high-volume, high-reliability synchronization engine bridging the gap between Shopify and MercadoLibre:
+Un motor de sincronización de alto volumen y alta fiabilidad que conecta Shopify con MercadoLibre:
 
-- **Serverless proxy layer** — custom API proxy deployed on Google Cloud Functions that silently bypasses WAF rate limiting and request blocks
-- **Bidirectional data flow** — transforms and injects inventory data into both platforms in real time, eliminating false-negative stock-outs
-- **Zero-cost infrastructure** — the entire proxy runs within free-tier serverless compute, optimizing operational costs
+- **Capa proxy serverless** — API proxy custom deployada en Google Cloud Functions que evita silenciosamente los rate limits WAF y bloqueos de requests
+- **Flujo de datos bidireccional** — transforma e inyecta datos de inventario en ambas plataformas en tiempo real, eliminando falsos negativos de stock
+- **Infraestructura a costo cero** — todo el proxy corre dentro del free-tier de cómputo serverless, optimizando costos operativos
 
 ---
 
-## 📊 Impact
+## 📊 Impacto
 
-| Metric | Before | After |
-|--------|--------|-------|
-| Manual data entry time | ~4 hrs/day | **Fully automated** |
-| Inventory sync accuracy | ~85% (manual) | **99.9% real-time** |
-| Customer logistics queries | Manual WhatsApp replies | **Self-service tracking** |
-| Financial auditing | Monthly manual review | **Daily automated ledger** |
+| Métrica | Antes | Después |
+|---------|-------|---------|
+| Tiempo de carga manual de datos | ~4 hs/día | **Completamente automatizado** |
+| Precisión de sincronización de inventario | ~85% (manual) | **99.9% en tiempo real** |
+| Consultas logísticas de clientes | Respuestas manuales por WhatsApp | **Tracking autoservicio** |
+| Auditoría financiera | Revisión manual mensual | **Libro diario automatizado** |
 
 ---
 
 <div align="center">
 
-**[⬅️ Back to Main Profile](./README.md)**
+**[⬅️ Volver al Perfil Principal](./README.md)**
 
 </div>
 
