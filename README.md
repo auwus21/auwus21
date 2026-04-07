@@ -51,13 +51,43 @@
 
 ## 🚀 Proyectos Destacados
 
-### 1. [CPU Scheduler Simulator](https://github.com/auwus21/cpu-scheduler-sim)
-Un simulador web interactivo diseñado para entender y visualizar los algoritmos de planificación de CPU del sistema operativo. Desarrollado con **React y Vite**, este proyecto incluye una interfaz visual robusta donde se pueden configurar ráfagas, prioridades y tiempos de llegada simulando tiempo real. (*Desplegado en GitHub Pages*).
+<br>
 
-### 2. [Trading Bot Institucional](https://github.com/auwus21/BotTrading)
+### 💻 [CPU Scheduler Simulator](https://github.com/auwus21/cpu-scheduler-sim)
+
+<p align="center">
+  <a href="https://github.com/auwus21/cpu-scheduler-sim">
+    <!-- Reemplazar el src por la ruta de tu screenshot real del proyecto (Ej: ./images/screenshot-cpu.png) -->
+    <img src="./images/preview.png" alt="Screenshot CPU Scheduler" width="100%" style="border-radius: 10px;"/>
+  </a>
+</p>
+
+Un simulador web interactivo diseñado para entender y visualizar los algoritmos de planificación de CPU del sistema operativo. Desarrollado con **React y Vite**, este proyecto incluye una interfaz visual robusta donde se pueden configurar ráfagas, prioridades y tiempos de llegada simulando tiempo real. *(Desplegado en GitHub Pages)*.
+
+<br><hr><br>
+
+### 📈 [Trading Bot Institucional](https://github.com/auwus21/BotTrading)
+
+<p align="center">
+  <a href="https://github.com/auwus21/BotTrading">
+    <!-- Reemplazar el src por la ruta de tu screenshot real del proyecto -->
+    <img src="./images/preview.png" alt="Screenshot Trading Bot" width="100%" style="border-radius: 10px;"/>
+  </a>
+</p>
+
 Bot de automatización de trading con una arquitectura *multi-perfil* y configuraciones de grado institucional. Diseñado en **Python**, incluye un dashboard frontend, integraciones vía APIs para recuperación de métricas y funcionalidades avanzadas de *"Factory Reset"* para gestión estricta del riesgo comercial.
 
-### 3. [Ecosistema Backoffice TecStore](./TecStore-CaseStudy.md) 🔒
+<br><hr><br>
+
+### 🛒 [Ecosistema Backoffice TecStore](./TecStore-CaseStudy.md) 🔒
+
+<p align="center">
+  <a href="./TecStore-CaseStudy.md">
+    <!-- Reemplazar el src por la ruta de tu screenshot real del proyecto -->
+    <img src="./images/preview.png" alt="Screenshot TecStore" width="100%" style="border-radius: 10px;"/>
+  </a>
+</p>
+
 Suite propietaria de operaciones e-commerce para [TecStore Argentina](https://tecstorearg.com/). *(Software Privado)*.
 - **Logística:** Módulo de seguimiento en tiempo real y estados.
 - **Finanzas:** Sistema algorítmico de cálculo y asiento automático de "Caja Parada" e intereses para socios.
@@ -65,14 +95,20 @@ Suite propietaria de operaciones e-commerce para [TecStore Argentina](https://te
 
 > 📄 *[Leer el Caso de Estudio Completo sobre la infraestructura TecStore](./TecStore-CaseStudy.md)*
 
+<br>
+
 ---
 
-## 📦 Otros Proyectos Relevantes
+## 📦 Otros Proyectos
 
-| Proyecto | Descripción |
-|----------|-------------|
-| **JDShop Migration** | Modernización completa de la base de datos de un e-commerce integrando persistencia distribudida con **Supabase**, APIs en React y desarrollo de triggers automáticos (*User/Score management*). |
-| **Open Claw SSO Gateway** | Un portal de validación y Single Sign-On (SSO) para otorgar sesiones con caducidad por *countdown timer* a invitados, administrado enteramente mediante un panel web administrativo e institucional asegurado. |
+| Proyecto | Descripción | Tecnologías |
+|----------|-------------|-------------|
+| 🧾 [**Bot de WhatsApp para registrar gastos**](https://github.com/auwus21/whatsapp-ticket-bot) | Recibe tickets por WhatsApp (texto o imagen), los analiza con IA y los carga en Google Sheets. | `whatsapp-web.js`, `Tesseract.js`, `Google Sheets API`, `Gemini`, `Node.js` |
+| 📦 [**Gestor de Pedidos para Empleados**](https://github.com/auwus21/whatsapp-pedidos-empleados) | Sistema de consulta y avisos por WhatsApp que avisa automáticamente a empleados cuándo llegan productos o hay saldo pendiente. | `Node.js`, `Google Sheets`, `Railway`, `whatsapp-web.js` |
+| 🎰 [**Ruleta React Promocional**](https://github.com/auwus21/ruleta-promocional-react) | Ruleta interactiva para campañas promocionales. Valida código + pedido, muestra premios animados y registra todo en automatizado. | `React`, `Vite`, `Tailwind`, `Framer Motion` |
+| 📦 [**Seguimiento de envíos (TecStore)**](https://github.com/auwus21/tracking-tecstore-md) | Web pública para que el cliente consulte el estado de su pedido con el número. Integrado a DB y animado. | `React`, `Vite`, `Framer Motion` |
+| 🛒 [**Sitio web TecStore**](https://tecstorearg.com/) | E-commerce desarrollado y conectado a microservicios logísticos en tiempo real. | `Shopify`, `Node.js` |
+| 🧾 [**Marketplace Descentralizado**](https://github.com/TP-Seminario-de-Lenguajes-Rust-2025/marketplacedescentralizado) | Plataforma Web3 e-commerce sobre blockchain construida en Rust. Contratos inteligentes de calificación y perfiles. | `Rust`, `Ink!`, `Substrate` |
 
 ---
 
@@ -81,7 +117,7 @@ Suite propietaria de operaciones e-commerce para [TecStore Argentina](https://te
 - 👨‍💼 Actual dueño de [**Tec Store Argentina**](https://www.instagram.com/tecstore.arg/) (desde 2024), una de las tiendas tech líderes de Argentina con **+300.000 seguidores** en Instagram.
 - 🧩 Poseo un perfil híbrido: desarrollo soluciones técnicas enfocadas al **escalado del negocio real**.
 - 🧾 Especialista en automatización, logística, sincronización cross-plataforma (Shopify / ML) y dashboards de administración B2B/B2C.
-- 💡 Estudiante de la Licenciatura en Sistemas orientado al backend e infraestructura de sistemas institucionales complejos.
+- 💡 Estudiante de la Licenciatura en Sistemas.
 
 ---
 
