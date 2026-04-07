@@ -18,7 +18,7 @@
 </div>
 
 > [!NOTE]
-> Este proyecto es de **código cerrado** por políticas de seguridad interna del negocio. Este documento sirve como vista ilustrativa de la arquitectura, los módulos construidos y los problemas técnicos resueltos.
+> Este proyecto es de **código cerrado** por políticas de seguridad interna del negocio. Este documento sirve como vista ilustrativa de la arquitectura, los módulos construidos y los problemas técnicos resueltos. Los datos sensibles de infraestructura y nombres de arquitecturas internas han sido ofuscados por privacidad.
 
 ---
 
@@ -26,8 +26,8 @@
 
 - [El Problema](#-el-problema--por-qué-surgió-este-proyecto)
 - [Arquitectura General](#-arquitectura-general)
-- [La Web — tecstore-web](#-la-web--tecstore-web)
-- [El Sistema — SistemaVentaTec](#-el-sistema--sistemaventatec)
+- [La Web Pública](#-la-web-pública)
+- [El Sistema Backoffice](#-el-sistema-backoffice)
 - [Módulo de Ventas](#-módulo-de-ventas)
 - [Módulo de Catálogo y Compras](#-módulo-de-catálogo-y-compras)
 - [Módulo de Logística e Inventario](#-módulo-de-logística-e-inventario)
@@ -46,9 +46,9 @@
 
 **TecStore Argentina** es una empresa de e-commerce de tecnología que creció de forma exponencial en redes sociales, acumulando **+300.000 seguidores en Instagram** y procesando cientos de operaciones diarias entre ventas, logística, compras a proveedores y gestión de socios inversores.
 
-El negocio originalmente funcionaba con herramientas genéricas. No existía un sistema centralizado: el stock se controlaba en planillas, los envíos se comunicaban manualmente, la contabilidad entre socios se revisaba cuando se podía, y los precios de MercadoLibre se actualizaban uno por uno.
+El negocio originalmente funcionaba con herramientas genéricas. No existía un sistema centralizado: el stock se controlaba en planillas, los envíos se comunicaban manualmente, la contabilidad interna se revisaba esporádicamente, y los precios externos se actualizaban uno por uno.
 
-**El negocio estaba creciendo más rápido que la infraestructura que lo sostenía.** Cada semana había errores humanos: envíos sin avisar, precios desactualizados, stock fantasma, y una total invisibilidad financiera.
+**El negocio estaba creciendo más rápido que la infraestructura que lo sostenía.** Cada semana había riesgos de errores operativos: desincronización de inventario, precios desactualizados en marketplaces y falta de reportes financieros en tiempo real.
 
 Surgió la necesidad de construir — desde cero — un **ecosistema tecnológico completo** con dos grandes pilares: un **sistema interno de gestión** (backoffice) y una **web pública e-commerce**, ambos conectados a una misma base de datos en la nube.
 
@@ -56,7 +56,7 @@ Surgió la necesidad de construir — desde cero — un **ecosistema tecnológic
 
 ## 🏗️ Arquitectura General
 
-El ecosistema se divide en dos aplicaciones independientes que comparten la misma capa de datos en **Supabase (PostgreSQL)**:
+El ecosistema se divide en dos aplicaciones independientes que comparten una capa de datos centralizada en **PostgreSQL (Supabase)**:
 
 ```
 ╔══════════════════════════════════════════════════════════════════════════╗
@@ -65,45 +65,41 @@ El ecosistema se divide en dos aplicaciones independientes que comparten la mism
 ║                                                                          ║
 ║   ┌──────────────────────┐            ┌───────────────────────────┐     ║
 ║   │    🌐 LA WEB          │            │    ⚙️ EL SISTEMA           │     ║
-║   │   tecstore-web        │            │   SistemaVentaTec         │     ║
 ║   │   (Cliente Final)     │            │   (Backoffice Interno)    │     ║
 ║   │                      │            │                           │     ║
 ║   │  Next.js 14 + TS     │            │  React 19 + Vite          │     ║
 ║   │  Framer Motion       │            │  Tailwind CSS             │     ║
 ║   │  Zustand             │◄──────────►│  Recharts                 │     ║
 ║   │  next-themes         │            │  SWR                      │     ║
-║   │                      │            │  jsPDF + html2canvas      │     ║
+║   │                      │            │  Visualización PDF        │     ║
 ║   │  ─────────────────   │            │  ─────────────────────    │     ║
-║   │  • Catálogo público  │            │  • Dashboard              │     ║
+║   │  • Catálogo público  │            │  • Dashboard General      │     ║
 ║   │  • Carrito + Checkout│            │  • Ventas + Pedidos Web   │     ║
 ║   │  • Seguimiento envíos│            │  • Compras + Proveedores  │     ║
 ║   │  • Rewards / Kiosco  │            │  • Logística + Inventario │     ║
-║   │  • Ruleta promo      │            │  • Finanzas + Caja Parada │     ║
-║   │  • Cotizador usados  │            │  • iPhones Usados         │     ║
-║   │  • Perfil de usuario │            │  • Rewards Admin          │     ║
-║   │  • Dark Mode         │            │  • Auditoría + Logs       │     ║
+║   │  • Ruleta promo      │            │  • Finanzas + Inversiones │     ║
+║   │  • Cotizador usados  │            │  • Cotizador Interno      │     ║
+║   │  • Perfil de usuario │            │  • Gestión de Fidelidad   │     ║
 ║   └──────────┬───────────┘            └─────────────┬─────────────┘     ║
 ║              │                                       │                   ║
 ║              └───────────────┬───────────────────────┘                   ║
 ║                              │                                           ║
 ║                 ┌────────────▼──────────────────┐                       ║
-║                 │     🗄️ SUPABASE (PostgreSQL)   │                       ║
+║                 │     🗄️ BACKEND CORE            │                       ║
 ║                 │                                │                       ║
-║                 │  • 70+ migraciones SQL         │                       ║
-║                 │  • Row Level Security (RLS)    │                       ║
-║                 │  • Edge Functions (Gemini AI)  │                       ║
-║                 │  • Triggers automáticos        │                       ║
-║                 │  • Stored Procedures (RPCs)    │                       ║
-║                 │  • Realtime subscriptions      │                       ║
+║                 │  • Base de datos relacional    │                       ║
+║                 │  • Políticas de acceso (RLS)   │                       ║
+║                 │  • Edge Functions (IA)         │                       ║
+║                 │  • Triggers para automatización│                       ║
+║                 │  • Procedimientos almacenados  │                       ║
 ║                 └────────────────────────────────┘                       ║
 ║                              │                                           ║
 ║                 ┌────────────▼──────────────────┐                       ║
 ║                 │     🔗 INTEGRACIONES           │                       ║
 ║                 │                                │                       ║
-║                 │  • MercadoLibre API (Proxy)    │                       ║
-║                 │  • Google Apps Script (WAF)    │                       ║
-║                 │  • Google Gemini (IA)          │                       ║
-║                 │  • Vercel Analytics            │                       ║
+║                 │  • Proxy para Marketplaces     │                       ║
+║                 │  • Serverless Functions        │                       ║
+║                 │  • Motor de IA (Google)        │                       ║
 ║                 └────────────────────────────────┘                       ║
 ║                                                                          ║
 ╚══════════════════════════════════════════════════════════════════════════╝
@@ -111,398 +107,179 @@ El ecosistema se divide en dos aplicaciones independientes que comparten la mism
 
 ---
 
-## 🌐 La Web — tecstore-web
+## 🌐 La Web Pública
 
 La cara visible del negocio. Una **aplicación Next.js 14 con TypeScript** completa que funciona como e-commerce, portal de clientes y plataforma de fidelización.
 
-### Stack de la Web
+### Tecnologías Utama
+- **Framework:** Next.js 14 (App Router)
+- **Lenguaje:** TypeScript
+- **Estilos y Animaciones:** Tailwind CSS, Framer Motion
+- **Estado Global:** Zustand
+- **Modo Oscuro:** next-themes
 
-| Componente | Tecnología |
-|:----------:|:----------:|
-| Framework | **Next.js 14** (App Router) |
-| Lenguaje | **TypeScript** |
-| Estilos | **Tailwind CSS** |
-| Animaciones | **Framer Motion** |
-| State Management | **Zustand** |
-| Base de Datos | **Supabase** (PostgreSQL) |
-| Tema | **next-themes** (Dark/Light Mode) |
-| SEO | sitemap.ts, robots.ts dinámicos |
-| Deploy | **Vercel** |
-
-### Rutas y Funcionalidades de la Web
-
-| Ruta | Funcionalidad |
-|------|--------------|
-| `/` | **Home Page** — Hero carousel animado, catálogo destacado, robot animado interactivo |
-| `/catalogo` | **Catálogo Público** — Todos los productos disponibles con búsqueda, filtros y variantes |
-| `/checkout` | **Carrito y Checkout** — Flujo de compra completo con sidebar de carrito persistente |
-| `/seguimiento` | **Tracking de Envíos** — El cliente ingresa su número de pedido y ve el estado animado en tiempo real |
-| `/rewards` | **Programa TecPoints** — Dashboard del programa de fidelización con puntos acumulados y misiones |
-| `/kiosco` | **Kiosco de Premios** — Canje de TecPoints por descuentos y beneficios |
-| `/ruleta` | **Ruleta Promocional** — Ruleta interactiva con validación de código de compra y premios al azar |
-| `/cotizar` | **Cotizador de Usados** — Herramienta para cotizar iPhones y dispositivos usados |
-| `/usados` | **Catálogo de Usados** — Listado de dispositivos reacondicionados en venta |
-| `/perfil` | **Perfil del Usuario** — Historial de compras, datos personales, avatares |
-| `/auth` | **Autenticación** — Login/Registro integrado con Supabase Auth |
-| `/ayuda` | **Centro de Ayuda** — FAQ y soporte |
-
-### Componentes Destacados de la Web
-- **`HeroCarousel.tsx`** (18KB) — Carrusel hero con transiciones animadas
-- **`CartSidebar.tsx`** — Panel lateral de carrito persistente
-- **`GlobalSearch.tsx`** — Búsqueda global en tiempo real
-- **`AnimatedRobot.tsx`** — Robot mascota animado con CSS puro
-- **`ThemeToggle.tsx`** — Toggle dark/light mode
+### Componentes Clave del E-Commerce
+- **Catálogo y Checkout:** Flujo de compra optimizado con sidebar persistente y búsqueda global de baja latencia.
+- **Logística Integrada:** Portal de tracking (seguimiento) donde el cliente visualiza el estado animado de su paquete en tiempo real, conectado directamente al backoffice.
+- **Cotizador de Dispositivos:** Aplicación web embebida que valora automáticamente los equipos usados de los clientes que deseen dejarlos en parte de pago.
+- **Fidelización y Gamificación:** Un portal propio para los "TecPoints" con sistema de misiones, un kiosco de canje, y una ruleta interactiva para campañas promocionales mediante validación criptográfica de órdenes de compra.
 
 ---
 
-## ⚙️ El Sistema — SistemaVentaTec
+## ⚙️ El Sistema Backoffice
 
-El corazón operativo. Es una **SPA en React 19 + Vite** que el equipo y los directivos usan para operar el negocio diariamente. Cada módulo fue construido a medida.
+El corazón operativo. Es una **Single Page Application en React 19** que el equipo y los directivos usan para operar el negocio minuto a minuto. 
 
-### Stack del Sistema
-
-| Componente | Tecnología |
-|:----------:|:----------:|
-| Framework | **React 19** |
-| Bundler | **Vite** |
-| Estilos | **Tailwind CSS** |
-| Base de Datos | **Supabase** (PostgreSQL) |
-| Gráficos | **Recharts** |
-| Data Fetching | **SWR** (stale-while-revalidate) |
-| PDFs | **jsPDF + jsPDF-AutoTable** |
-| Capturas | **html2canvas** |
-| Códigos de barra | **react-barcode** |
-| Iconos | **Lucide React** |
-| Notificaciones | **SweetAlert2** |
-| Analytics | **Vercel Analytics + React GA4** |
-| Sanitización | **DOMPurify** |
-| Deploy | **Vercel** |
-
-### Rutas del Sistema (con control de acceso)
-
-| Ruta | Módulo | Acceso |
-|------|--------|:------:|
-| `/` | Dashboard General | Todos |
-| `/ventas` | Gestión de Ventas | Todos |
-| `/compras` | Catálogo, Compras y Productos | Todos |
-| `/logistica` | Inventario, Despachos, Transferencias | Todos |
-| `/iphones` | Gestión de iPhones Usados | Todos |
-| `/rewards` | Administrar TecPoints / Rewards | Todos |
-| `/finanzas` | Finanzas, Caja Parada, Intereses | 🔒 Solo Admin |
-| `/configuracion` | Configuración del Sistema | 🔒 Solo Admin |
-| `/auditoria` | Logs y Auditoría del Sistema | 🔒 Solo Admin |
+### Tecnologías Utama
+- **Framework:** React 19 (Vite)
+- **Data Fetching:** SWR (stale-while-revalidate) para sincronización optimista.
+- **Análisis de Datos:** Recharts para visualización de métricas.
+- **Impresiones Físicas:** Generación dinámica de etiquetas, códigos de barras y resúmenes PDF.
 
 ### Funcionalidades Transversales
-- **`GlobalSearch`** — Buscador global por teclado (Ctrl+K) para encontrar productos, ventas o clientes
-- **`PresenceToast`** — Indicador en tiempo real de qué usuarios están conectados al sistema
-- **Rutas protegidas** — Middleware `ProtectedRoute` con validación de rol admin
-- **Títulos dinámicos** — Cada ruta actualiza el `document.title` automáticamente
+- **Búsqueda Global y Comandos:** Navegación por teclado (Ctrl+K) similar a un IDE para localizar rápidamente órdenes, productos o clientes.
+- **Conectividad en Tiempo Real:** Indicadores de usuarios concurrentes operando en las sucursales.
+- **Seguridad Perimetral:** Middleware interno para validar permisos y accesos específicos por rol directivo o empleado.
 
 ---
 
 ## 🛒 Módulo de Ventas
 
-El módulo más operativo del día a día. Gestiona todo el ciclo de vida de una venta.
+Gestiona todo el ciclo de vida de una transacción, integrando el flujo online y el punto de venta (POS).
 
-**Componentes principales** (12 archivos, ~280KB de código):
-
-| Componente | Función |
-|------------|---------|
-| **`SalesManager`** | Panel principal: listado de ventas con filtros, búsqueda y estados |
-| **`NewSaleForm`** (47KB) | Formulario completo de nueva venta: selección de productos, cliente, envío, pagos |
-| **`SaleDetailsModal`** (44KB) | Modal de detalle con vista completa de cada venta |
-| **`WebOrdersManager`** (32KB) | Gestión de pedidos que llegan desde la web pública |
-| **`CustomerModal`** | ABM de clientes con datos de contacto |
-| **`CustomerProfileModal`** | Perfil completo del cliente: historial de compras, puntos, etc. |
-| **`DeliverySection`** / **`DeliveryItemsSection`** | Configuración de envío dentro de la venta |
-| **`PaymentSection`** / **`PaymentsSection`** | Gestión de formas de pago (efectivo, transferencia, cuotas) |
-| **`PurchasesPanel`** | Vista rápida de compras asociadas |
-| **`RewardsManager`** (43KB) | Administración completa del programa TecPoints |
+- **Gestión Unificada:** Consolidación de los pedidos provenientes de la web con las ventas generadas en la sucursal física.
+- **Formularios Dinámicos:** Alta de ventas complejas con cálculos automáticos de retenciones, cuotas, entregas parceladas y múltiples métodos de pago combinados.
+- **Perfiles 360° del Cliente:** Consulta instantánea del historial comercial de cada persona (compras anteriores, puntos de fidelidad acumulados, disputas).
+- **Asignación de Logística:** Preparación inmediata de la orden de envío directamente desde el POS.
 
 ---
 
 ## 📦 Módulo de Catálogo y Compras
 
-Gestiona los productos, proveedores y el abastecimiento del negocio.
+Control integral del reabastecimiento y la vidriera comercial.
 
-**Componentes principales** (7 archivos, ~248KB de código):
-
-| Componente | Función |
-|------------|---------|
-| **`ProductsManager`** (30KB) | ABM completo de productos con categorías, subcategorías, precios, costos y fees |
-| **`WebStoreManager`** (115KB) | **El componente más grande del sistema.** Panel de gestión de la tienda online: sincronización de precios con MercadoLibre, gestión de variantes, imágenes, slugs, ofertas y publicación hacia la web |
-| **`PurchasesManager`** | Listado y gestión de órdenes de compra a proveedores |
-| **`NewPurchaseForm`** (25KB) | Formulario de nueva compra con ingreso parcial de productos |
-| **`PurchaseDetailsModal`** (57KB) | Detalle exhaustivo de cada compra con estado de pagos |
-| **`PurchasePayments`** | Gestión de pagos a proveedores |
-| **`ProviderModal`** | ABM de proveedores |
+- **Administración del Catálogo:** Gestión de variantes, carga eficiente de multimedia (optimizada al vuelo) y estructuras jerárquicas de categorías.
+- **Sincronizador Híbrido:** Gestión del inventario para la tienda online propia y publicación hacia marketplaces de terceros.
+- **Motor de Compras a Proveedores:** Seguimiento de facturas, pagos paciales y automatización en la entrada del inventario cuando arriban los lotes físicos.
 
 ---
 
 ## 🚚 Módulo de Logística e Inventario
 
-Control total del stock en múltiples ubicaciones físicas y movimiento de mercadería.
+Control estricto con trazabilidad del 100% en las existencias físicas distribuidas en múltiples ubicaciones.
 
-**Componentes principales** (9 archivos, ~192KB de código):
-
-| Componente | Función |
-|------------|---------|
-| **`LogisticsDashboard`** (19KB) | Dashboard de logística con métricas y estado general |
-| **`StockMatrix`** (25KB) | **Matriz de stock** — Vista cruzada producto × ubicación con cantidades en tiempo real |
-| **`StockCensus`** (39KB) | **Censo de stock** — Herramienta de auditoría física para verificar stock real vs. sistema |
-| **`InventoryManager`** | Gestión de movimientos de inventario automáticos |
-| **`StockMovementsHistory`** (17KB) | Historial completo de todos los movimientos de stock |
-| **`TransfersManager`** (24KB) | Gestión de transferencias de mercadería entre sucursales |
-| **`NewTransferForm`** (19KB) | Formulario de nueva transferencia entre ubicaciones |
-| **`TransferModal`** | Detalle de cada transferencia |
-| **`PendingDispatchView`** (26KB) | Vista de despachos pendientes con acciones masivas |
-
-### Lógica de Base de Datos para Inventario
-El sistema cuenta con **triggers automáticos en PostgreSQL** que actualizan el stock en tiempo real cada vez que se registra una venta, compra, transferencia o ajuste. Las migraciones SQL incluyen:
-- `setup_inventory_movements_trigger.sql` — Trigger de movimientos automáticos
-- `setup_stock_controls.sql` — Controles de stock con RLS
-- `fix_ghost_transit_stock.sql` — Corrección de stock fantasma en tránsito
-- `sync_iphones_batches.sql` — Sincronización de lotes de iPhones
+- **Matriz Analítica de Stock:** Cruce de datos entre productos y sucursales/depósitos para facilitar la reubicación de mercadería.
+- **Auditorías Físicas (Censo):** Módulo tipo "escáner ciego" para conciliar el conteo físico del personal contra los números del sistema y ajustar discrepancias.
+- **Despachos Masivos:** Panel estilo Kanban para armar grupos de envío y procesar estados de envíos ("Preparado", "Despachado") que dispara notificaciones automáticas al cliente.
+- **Automatización SQL:** La base de datos opera con triggers nativos; toda venta, compra o devolución efectúa el ajuste de stock sin intervención de la capa de aplicación, asegurando integridad total (ACID).
 
 ---
 
-## 💰 Módulo Financiero — Caja Parada, Intereses y Cierres
+## 💰 Módulo Financiero — Diagnósticos, Intereses y Cierres
 
-El módulo más complejo del ecosistema. Gestiona la contabilidad entre socios, el flujo de caja, gastos, y el sistema de penalidades.
+El módulo más avanzado desde el punto de vista arquitectónico, que resuelve la necesidad de los inversores de mantener control exacto de su capital.
 
-**Componentes principales** (10 archivos, ~263KB de código):
+- **CashFlow Inmutable:** Un registro financiero donde ningún movimiento contable puede ser simplemente "borrado", operando bajo estrictos principios de partida doble y cierres periódicos.
+- **Panel de Capital y Inversiones:** Análisis visual para directivos sobre rentabilidades y activos fijos.
+- **Cierres Mensuales a 1 Click:** Rutina que compila automáticamente la facturación, los descuentos, las pérdidas de stock y liquida márgenes de rentabilidad, exportando la contabilidad.
 
-| Componente | Función |
-|------------|---------|
-| **`FinanceManager`** (28KB) | Panel central financiero con navegación entre submódulos |
-| **`CashFlowView`** (41KB) | **Flujo de Caja** — Vista completa de ingresos y egresos con filtros temporales |
-| **`PenaltyDashboard`** (54KB) | **Caja Parada** — Dashboard de penalidades por capital inactivo por sucursal |
-| **`PartnerInterests`** (27KB) | **Intereses de Socios** — Motor financiero que calcula interés prorateado (2% mensual) sobre el capital diario de cada socio |
-| **`InterestDashboard`** | Vista resumida del módulo de intereses |
-| **`ExpensesList`** (15KB) | Listado de gastos del negocio |
-| **`NewExpenseModal`** (36KB) | Formulario para registrar nuevos gastos con categorización |
-| **`MonthlyClosingModal`** (32KB) | **Cierre Mensual** — Proceso que consolida todas las operaciones del mes y genera el balance |
-| **`ClosingHistory`** (14KB) | Historial de cierres mensuales anteriores |
-| **`CompanyAssetsManager`** (13KB) | Gestión de activos de la empresa |
-
-### Sistema de Caja Parada e Intereses
-
-Este módulo implementa un **motor financiero de asientos diarios**:
+### Motor de Intereses Prorrateados
+El negocio fue implementado de modo que el capital que no está circulando activamente recibe recargos ("Caja inactiva"), mientras que hay balances de socios inversores fluctuando diariamente:
 
 ```
-  📅 El motor financiero calcula automáticamente:
+  📅 El motor financiero en la nube efectúa cortes en el tiempo:
 
-  Para cada socio (Agustín, Lautaro, Matías):
-  ┌─────────────────────────────────────────────────────────┐
-  │  1. Lee el historial de aportes y retiros               │
-  │  2. Arma la curva del capital día por día                │
-  │  3. Determina si el saldo es POSITIVO o NEGATIVO        │
-  │  4. Proratea el 2% mensual de interés por día           │
-  │  5. Si hay capital ocioso → Penalidad "Caja Parada"     │
-  │  6. Si hay deuda → Intereses a pagar                    │
-  │  7. Asientos dobles de inversión/reinversión             │
-  │     (ingreso + egreso cruzado sin romper el cashflow)    │
-  └─────────────────────────────────────────────────────────┘
+  1. Reconstruye la curva de saldo para cada aportante desde sus movimientos.
+  2. Determina exactamente cuántos días un saldo estuvo en positivo o negativo.
+  3. Ejecuta cálculos de interés simple y compuesto para devengar montos.
+  4. Genera automáticamente los asientos de reinversión para cuadrar el 
+     balance general sin distorsionar la facturación del negocio.
 ```
 
-### Migraciones SQL Financieras
-- `diagnostico_financiero.sql` — Procedimientos de diagnóstico
-- `penalty_records.sql` — Estructura de registros de penalidades
-- `penalty_improvements.sql` — Mejoras al sistema
-- `monthly_closings.sql` — Estructura de cierres mensuales
-- `system_settings.sql` — Configuraciones del sistema (tasas, fechas de corte)
+---
+
+## 📱 Módulo de Equipos Reacondicionados
+
+Un segmento altamente dinámico orientado a dispositivos electrónicos usados.
+
+- **Ciclo de Vida Individual:** Cada equipo se registra e ingresa al inventario mediante su código de serie (IMEI), especificando su estado cosmético, salud de batería e historial de reparaciones.
+- **Cotizador Inteligente Interno:** Algoritmo que cruza el costo de reposición vigente en el mercado con las penalizaciones por desgaste, sugiriendo un margen de compra óptimo al vendedor que toma el equipo.
+- **Generación de Etiquetas:** Creación instantánea de etiquetas en formato térmico para trazar el equipo por la trastienda.
 
 ---
 
-## 📱 Módulo de iPhones Usados
+## 🏆 Módulo de Rewards (Fidelización)
 
-Un módulo completo y especializado para la **compra-venta de dispositivos Apple reacondicionados**.
+Mecanismo interno diseñado para incrementar el retorno recurrente del cliente (LTV).
 
-**Componentes principales** (9 archivos, ~170KB de código):
-
-| Componente | Función |
-|------------|---------|
-| **`IphonesManager`** (40KB) | Panel principal: listado de todos los dispositivos con estados, filtros y dashboard de métricas |
-| **`PhoneModalForm`** (51KB) | Formulario completo de ingreso/edición de un dispositivo con campos dinámicos por modelo |
-| **`PhoneQuoterModal`** (20KB) | **Cotizador inteligente** — Herramienta que calcula el precio de compra sugerido basado en modelo, capacidad, batería y estado |
-| **`PhoneSettingsModal`** (28KB) | Configuración de modelos, colores y precios de referencia |
-| **`LabelPrinter`** | Generador de etiquetas con código de barras para cada dispositivo |
-| **`AnimatedGuides`** | Guías visuales animadas para el checkout de dispositivos |
-
-### Base de Datos para iPhones
-- `setup_iphone_model_colors.sql` — Catálogo de modelos y colores disponibles
-- `sync_iphones_batches.sql` — Sincronización de lotes
-- Cada iPhone se trackea individualmente con IMEI, estado de batería, estado cosmético y precio
+- **Automatización Base de Datos:** La acumulación de puntos está blindada. Los disparadores de base de datos le dan un valor a la transacción y asignan puntos a la billetera digital del comprador.
+- **Lógica de Misiones:** Un sistema asíncrono analiza los patrones (ej: "segunda compra en el mes") y desbloquea multiplicadores promocionales.
+- **Soporte Administrativo:** Los supervisores cuentan con herramientas para otorgar puntos compensatorios, así como auditorías de canje para prevenir fraudes.
 
 ---
 
-## 🏆 Módulo de Rewards (TecPoints)
+## 🔄 Sincronización Serverless de Precios Externos
 
-Sistema de **fidelización gamificado** que premia a los clientes por sus compras y actividad.
+Uno de los mayores desafíos del negocio era mantener miles de precios alineados con Marketplaces, dada la hiperinflación cambiaria periódica y los bloqueos por bots.
 
-### En el Sistema (Admin)
-- **`RewardsManager`** (43KB) — Panel de administración: ver todos los puntos otorgados, gestionar misiones, auditar logs de rewards
+### Solución Serverless contra Firewalls
+El marketplace de destino utiliza un Firewall de Aplicaciones Web (WAF) muy estricto que bloqueaba y banneaba las IPs de servidores comunes al intentar actualizar los listados automáticamente.
 
-### En la Web (Cliente)
-- **`/rewards`** (19KB) — Dashboard personal con puntos acumulados y misiones disponibles
-- **`/kiosco`** — Tienda de canje: los clientes intercambian TecPoints por descuentos y premios
-- **`/ruleta`** (19KB) — Ruleta promocional con validación de código de compra
+Se diseñó una arquitectura de mitigación de 3 capas:
+1. **Frontend del Administrador:** Dictamina los márgenes de ganancia masivos deseados.
+2. **Workers Intermedios:** Entorno serverless que orquesta la ejecución.
+3. **Proxy de Nube Transparente:** Las peticiones son enrutadas a través de redes institucionales server-to-server externas gratuitas de alta reputación (que eluden los bloqueos).
 
-### Base de Datos de Rewards (8 migraciones SQL)
-- `tecstore_rewards_schema.sql` — Esquema completo
-- `rewards_trigger.sql` — Trigger que otorga puntos automáticamente al procesar una venta
-- `missions_trigger.sql` — Sistema de misiones (comprar X veces, etc.)
-- `rewards_kiosco.sql` — Catálogo de premios canjeables
-- `sale_spins.sql` — Giros de ruleta vinculados a ventas
-- `ruleta_premios.sql` + `dynamic_ruleta_prizes.sql` — Premios dinámicos configurables
+**Resultado:** Se actualizaron catálogos inmensos con una latencia mínima de manera autónoma sin intervención manual, con un costo mensual de infraestructura externo de **$0**.
 
 ---
 
-## 🔄 Sincronización con MercadoLibre
+## 🛡️ Seguridad e IA (Inteligencia Artificial)
 
-El módulo **WebStoreManager** (115KB — el componente más grande del sistema) gestiona la presencia de TecStore en MercadoLibre.
+### Fases de Endurecimiento ("Hardening")
+El sistema fue escalando sus políticas de seguridad (Row Level Security) hasta alcanzar un estándar corporativo:
+- **Protección Perimetral:** Cada tabla valida la sesión a nivel de red antes de devolver un paquete de datos, garantizando que el personal de ventas no pueda alterar inventarios de otra sucursal u ojear finanzas.
+- **Auditoría inmutable:** Todas las operaciones de alta jerarquía se replican en tablas de trazabilidad (Logs), adjuntando qué ID ejecutó la acción y bajo qué rol.
+- **Sanitización Contra Ataques:** Protección contra Cross-Site Scripting (XSS) y parametrización de consultas nativas por la capa de acceso a datos.
 
-### El Desafío
-MercadoLibre tiene protecciones **WAF agresivas** que bloquean requests automatizados desde servidores (como Vercel).
+### Empoderamiento por Inteligencia Artificial
+La infraestructura integra LLMs (Large Language Models) para asistir en la confección de productos:
+- Se levantó un microservicio (Edge Function) protegido que aloja las credenciales criptográficas, el cual oficia de intermediario para el modelo de IA de Google.
+- Se utiliza la IA para categorizar y autocompletar especificaciones técnicas complejas en el catálogo, ahorrando horas operativas de data entry o formateo manual.
 
-### La Solución
+---
+
+## 🔗 Relación Simbiótica (Web ↔ Sistema)
+
+La arquitectura garantiza un flujo ininterrumpido sin APIs intermedias que sufran demoras de sincronización, compartiendo el mismo centro de datos en tiempo real:
 
 ```
-  ┌──────────────────┐     ┌──────────────────────┐     ┌────────────────┐
-  │  WebStoreManager  │     │   Proxy Serverless    │     │  MercadoLibre  │
-  │  (React)          │────►│  (Google Apps Script) │────►│    API         │
-  │                   │     │                       │     │                │
-  │  Gestión de:      │     │  • Bypass WAF         │     │  • Precios     │
-  │  • Precios        │     │  • Free tier          │     │  • Stock       │
-  │  • Variantes      │     │  • Requests desde IP  │     │                │
-  │  • Ofertas        │     │    de Google           │     │                │
-  │  • Imágenes       │     │                       │     │                │
-  └──────────────────┘     └───────────────────────┘     └────────────────┘
+  CLIENTE (Next.js)      ◄──────►      CAPA DE DATOS       ◄──────►      EMPLEADO (React)
+  • Carga su carrito                   • Asegura el stock                • Ve que bajó el inventario
+  • Completa la compra                 • Transacciona                    • Preparan el paquete y pulsan "Despachar"
+  • Recibe "Puntos"                    • Registra métricas               • Finanzas lo ve liquidado en su flujo
 ```
 
-- **`api/ml-price.js`** — Endpoint serverless en Vercel que orquesta la consulta
-- **Google Apps Script** — Proxy intermedio que evita bloqueos WAF
-- **`ml_price_reference.sql`** — Tabla de referencia de precios MercadoLibre en la DB
-- Soporte de conversión de tipos (`"$15.990,50"` → `15990.50`) para evitar errores de casting
+Cada interacción del usuario final resuena de fondo generando **indicadores clave de rendimiento (KPIs)** en las pantallas gerenciales al instante.
 
 ---
 
-## 🛡️ Seguridad e Inteligencia Artificial
+## 📊 Impacto de la Implementación
 
-### Seguridad (3 fases de hardening)
-El sistema pasó por **tres fases de endurecimiento de seguridad** documentadas en las migraciones SQL:
+| Proceso Manual (Anterior) | Mejora Autómata (Actual) |
+|---------------------------|--------------------------|
+| **Cierres Contables:** Complejos cruces a mano que llevaban una tarde. | **Un Clic:** Arroja proyecciones, rentabilidad neta y pasivos instantáneamente. |
+| **Integridad de Inventario:** Inconsistencias, doble venta y quiebres de stock continuos. | **Tiempo Real Constricto:** El stock es el amo absoluto de la web y el mostrador simultáneamente. |
+| **Campañas de Fidelización:** Proactivas y difíciles de contabilizar. | **Algorítmica:** Ruletas, incentivos, TecPoints — todo sucede solo de fondo. |
+| **Control Societario:** Registros difusos sobre quién retiró fondos o cuándo. | **Motor Financiero Matemático:** Penaliza capital ocioso y premia al equipo, evitando desbalances ocultos. |
+| **Soporte Postventa (Envíos):** Mensajes intermitentes uno a uno. | **Tracking Self-Service:** El cliente posee control de interfaz total que se mueve según el deósito empaca. |
 
-- **`security_hardening.sql`** (9.4KB) — Fase 1: Políticas RLS iniciales
-- **`security_hardening_phase2.sql`** (3.4KB) — Fase 2: Refuerzo de políticas
-- **`security_hardening_phase3.sql`** (14KB) — Fase 3: Hardening completo con control granular por acción y rol
-
-Además:
-- **`audit_logs.sql`** — Sistema de auditoría que registra cada acción crítica
-- **`trigger_audit_rewards.sql`** — Auditoría específica para movimientos de rewards
-- **Sanitización XSS** — Uso de `DOMPurify` para prevenir inyecciones, eliminación de `dangerouslySetInnerHTML`
-- **Protección de secretos** — Migración de API keys al servidor (Edge Functions)
-
-### Inteligencia Artificial
-- **`gemini-proxy`** (Supabase Edge Function) — Proxy seguro para consultas a Google Gemini
-- Utilizado para **autocompletado inteligente** de datos de productos (especificaciones, descripciones)
-- La lógica de IA fue removida del frontend y migrada a Edge Functions para proteger las API keys y límites de facturación
-
----
-
-## 🔗 Cómo se Relacionan Web y Sistema
-
-La Web y el Sistema son dos aplicaciones separadas que comparten la **misma base de datos Supabase**:
-
-```
-  CLIENTE compra en tecstore-web (Next.js)
-        │
-        ▼
-  Supabase registra el pedido (web_orders)
-        │
-        ├──► Trigger calcula TecPoints automáticamente
-        │         rewards_trigger.sql
-        │
-        ▼
-  SistemaVentaTec muestra el pedido en WebOrdersManager
-        │
-        ▼
-  Empleado procesa la venta → NewSaleForm
-        │
-        ├──► Stock se actualiza vía trigger
-        │         inventory_movements_trigger.sql
-        │
-        ├──► Cliente ve el estado en /seguimiento
-        │
-        ├──► Finanzas registra el ingreso en CashFlow
-        │
-        └──► Rewards otorga puntos automáticamente
-                  → Cliente los ve en /rewards y puede
-                    canjear en /kiosco
-```
-
-**Todo está interconectado.** Una sola venta dispara una cadena automática de actualización de stock, cálculo de puntos, registro financiero y tracking de envío.
-
----
-
-## 📊 Impacto Real
-
-| Métrica | Antes | Después | Mejora |
-|---------|:-----:|:-------:|:------:|
-| Registro de una venta | ~8 min (manual) | **< 1 min** (formulario guiado) | **87%** |
-| Control de stock | Planilla con errores | **Tiempo real multi-sucursal** con triggers | **~100%** |
-| Sincronización de precios ML | ~2 hs/día (uno por uno) | **Masivo en minutos** | **97%** |
-| Auditoría financiera de socios | 1 vez/mes (manual) | **Automática diaria** con interés prorrateado | **30x** |
-| Cierre mensual contable | ~1 día completo | **1 click** (MonthlyClosingModal) | **95%** |
-| Consultas de tracking | Respuestas manuales | **Autoservicio en /seguimiento** | **100%** |
-| Fidelización de clientes | Inexistente | **TecPoints + Misiones + Kiosco + Ruleta** | ∞ |
-| Cotización de usados | A ojo / experiencia | **Cotizador con fórmula** por modelo y estado | **100%** |
-| Errores de stock fantasma | ~15/semana | **< 1/mes** | **98%** |
-
-### Impacto en el Negocio
-
-| Área | Resultado |
-|------|-----------|
-| **Código** | +600KB solo de componentes React entre ambos proyectos. 70+ migraciones SQL. |
-| **Escalabilidad** | El negocio triplicó su volumen sin agregar personal operativo |
-| **Transparencia** | Los socios ven su estado contable con precisión diaria |
-| **Experiencia del cliente** | Tracking, rewards, cotizador, dark mode, carrito — todo self-service |
-| **Seguridad** | 3 fases de hardening, RLS granular, Edge Functions para IA, sanitización XSS |
-| **Infraestructura** | Todo en Supabase free tier + Vercel — costos operativos mínimos |
-
----
-
-## 🛠️ Stack Tecnológico Completo
-
-<div align="center">
-
-| Categoría | Web (tecstore-web) | Sistema (SistemaVentaTec) |
-|:---------:|:------------------:|:-------------------------:|
-| **Framework** | Next.js 14 | React 19 + Vite |
-| **Lenguaje** | TypeScript | JavaScript (JSX) |
-| **Estilos** | Tailwind CSS | Tailwind CSS |
-| **Base de Datos** | Supabase (PostgreSQL) | Supabase (PostgreSQL) |
-| **State** | Zustand | React Context + SWR |
-| **Animaciones** | Framer Motion | CSS + SweetAlert2 |
-| **Gráficos** | — | Recharts |
-| **PDFs** | — | jsPDF + AutoTable |
-| **Barcodes** | — | react-barcode |
-| **Temas** | next-themes | — |
-| **Auth** | Supabase Auth | Supabase Auth |
-| **IA** | — | Gemini (Edge Function) |
-| **Deploy** | Vercel | Vercel |
-| **SEO** | sitemap.ts + robots.ts | — |
-| **Analytics** | — | Vercel Analytics + GA4 |
-| **Security** | RLS + Auth | RLS + DOMPurify + Admin Routes |
-
-</div>
+### Conclusión Técnica
+Esta infraestructura representa algo superior a una tienda online tradicional; es un **ERP operativo asíncrono y a escala**, orquestando desde el pricing externo en marketplaces hasta el control minucioso de stock usado, utilizando servicios gratuitos y arquitecturas serverless state-of-the-art para reducir el costo de servidor virtualmente a cero.
 
 ---
 
 <div align="center">
-
-<br>
-
-> *"TecStore no es solo un e-commerce. Es un ecosistema de software construido internamente que conecta cada operación del negocio — desde que un proveedor factura hasta que el cliente recibe su paquete y acumula puntos por ello."*
 
 <br>
 
