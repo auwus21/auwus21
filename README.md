@@ -2,8 +2,6 @@
 
 <div align="center">
 
-[![Typing SVG](https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=22&duration=3000&pause=1000&color=58A6FF&center=true&vCenter=true&multiline=true&repeat=true&width=650&height=50&lines=Construyendo+sistemas+reales+que+mueven+negocios+reales+%F0%9F%9A%80)](https://git.io/typing-svg)
-
 <br>
 
 <a href="https://portfolio-agustin-olthoff.vercel.app/" target="_blank">
@@ -26,32 +24,6 @@
 
 <img src="https://komarev.com/ghpvc/?username=auwus21&label=Visitas%20al%20perfil&color=58A6FF&style=flat-square" alt="Visitas al perfil" />
 
-</div>
-
----
-
-## 🧠 Sobre mí
-
-- 👨‍💼 Actual dueño de [**Tec Store Argentina**](https://www.instagram.com/tecstore.arg/) (desde 2024), una de las tiendas tech líderes de Argentina con **+300.000 seguidores** en Instagram.
-- 🧩 Poseo un perfil híbrido: desarrollo soluciones técnicas enfocadas al **escalado del negocio real**.
-- 🧾 Especialista en automatización, logística, sincronización cross-plataforma (Shopify / ML) y dashboards de administración B2B/B2C.
-- 💡 Estudiante de la Licenciatura en Sistemas.
-
-<br>
-
-<div align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=auwus21&show_icons=true&theme=github_dark&hide_border=true&bg_color=0D1117&title_color=58A6FF&icon_color=58A6FF&text_color=C9D1D9&ring_color=58A6FF" alt="GitHub Stats" height="180"/>
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=auwus21&layout=compact&theme=github_dark&hide_border=true&bg_color=0D1117&title_color=58A6FF&text_color=C9D1D9" alt="Top Langs" height="180"/>
-</div>
-
----
-
-## ⚡ Tecnologías
-
-<div align="center">
-  <a href="https://skillicons.dev">
-    <img src="https://skillicons.dev/icons?i=react,vite,tailwind,nodejs,python,rust,supabase,git,github,vercel&theme=dark&perline=10" alt="Tech Stack"/>
-  </a>
 </div>
 
 ---
@@ -159,6 +131,25 @@
 | 🛒 | [**Sitio Web TecStore**](https://tecstorearg.com/) | E-commerce completo conectado a microservicios de logística e inventario en tiempo real. | `Shopify` `Google Apps Script` |
 
 </details>
+
+---
+
+## 🧠 Sobre mí
+
+- 👨‍💼 Actual dueño de [**Tec Store Argentina**](https://www.instagram.com/tecstore.arg/) (desde 2024), una de las tiendas tech líderes de Argentina con **+300.000 seguidores** en Instagram.
+- 🧩 Poseo un perfil híbrido: desarrollo soluciones técnicas enfocadas al **escalado del negocio real**.
+- 🧾 Especialista en automatización, logística, sincronización cross-plataforma (Shopify / ML) y dashboards de administración B2B/B2C.
+- 💡 Estudiante de la Licenciatura en Sistemas.
+
+---
+
+## ⚡ Tecnologías
+
+<div align="center">
+  <a href="https://skillicons.dev">
+    <img src="https://skillicons.dev/icons?i=react,nodejs,js,java,python,rust,supabase,postgres,vercel&theme=dark&perline=9" alt="Tech Stack"/>
+  </a>
+</div>
 
 ---
 
