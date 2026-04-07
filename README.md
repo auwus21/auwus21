@@ -24,76 +24,51 @@
 
 ---
 
-## 🛠️ Tecnologías y Herramientas
-
-<p align="center">
-  <strong>Frontend:</strong><br>
-  <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" />
-  <img src="https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white" />
-  <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" />
-</p>
-
-<p align="center">
-  <strong>Backend & DB:</strong><br>
-  <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" />
-  <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" />
-  <img src="https://img.shields.io/badge/Supabase-18181A?style=for-the-badge&logo=supabase&logoColor=3ECF8E" />
-</p>
-
-<p align="center">
-  <strong>Automatización & Otros:</strong><br>
-  <img src="https://img.shields.io/badge/Google_Apps_Script-4285F4?style=for-the-badge&logo=google&logoColor=white" />
-  <img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white" />
-  <img src="https://img.shields.io/badge/Rust-000000?style=for-the-badge&logo=rust&logoColor=white" />
-</p>
-
----
-
 ## 🚀 Proyectos Destacados
 
 <br>
 
-### 💻 [CPU Scheduler Simulator](https://github.com/auwus21/cpu-scheduler-sim)
-
-<p align="center">
+<div align="center">
   <a href="https://github.com/auwus21/cpu-scheduler-sim">
-    <!-- Reemplazar el src por la ruta de tu screenshot real del proyecto (Ej: ./images/screenshot-cpu.png) -->
-    <img src="./images/preview.png" alt="Screenshot CPU Scheduler" width="100%" style="border-radius: 10px;"/>
+    <img src="./images/cpusim.gif" alt="CPU Scheduler Simulator" width="100%" style="border-radius:10px;"/>
   </a>
-</p>
+</div>
 
-Un simulador web interactivo diseñado para entender y visualizar los algoritmos de planificación de CPU del sistema operativo. Desarrollado con **React y Vite**, este proyecto incluye una interfaz visual robusta donde se pueden configurar ráfagas, prioridades y tiempos de llegada simulando tiempo real. *(Desplegado en GitHub Pages)*.
+### [🖥️ CPU Scheduler Simulator](https://github.com/auwus21/cpu-scheduler-sim)
+> **Tecnologías:** React, Vite, CSS Animations | **Estado:** Desplegado
+
+Desarrollo de un **motor de simulación interactivo** implementado para entornos educativos. Permite visualizar e iterar algoritmos de planificación de CPU en tiempo real (FCFS, SJF, Round Robin). La plataforma ofrece customización absoluta de ráfagas, tiempos de llegada y prioridades con una interfaz de alta reactividad, proveyendo al usuario con métricas y de un diagrama de Gantt dinámico.
 
 <br><hr><br>
 
-### 📈 [Trading Bot Institucional](https://github.com/auwus21/BotTrading)
-
-<p align="center">
+<div align="center">
   <a href="https://github.com/auwus21/BotTrading">
-    <!-- Reemplazar el src por la ruta de tu screenshot real del proyecto -->
-    <img src="./images/preview.png" alt="Screenshot Trading Bot" width="100%" style="border-radius: 10px;"/>
+    <img src="./images/trading.png" alt="Institutional Trading Bot" width="100%" style="border-radius:10px;"/>
   </a>
-</p>
+</div>
 
-Bot de automatización de trading con una arquitectura *multi-perfil* y configuraciones de grado institucional. Diseñado en **Python**, incluye un dashboard frontend, integraciones vía APIs para recuperación de métricas y funcionalidades avanzadas de *"Factory Reset"* para gestión estricta del riesgo comercial.
+### [📈 Institutional Trading Architecture](https://github.com/auwus21/BotTrading)
+> **Tecnologías:** Python, React, APIs REST | **Estado:** Activo
+
+Arquitectura de automatización orientada algorítmicamente al trading. Integra un backend robusto en Python que lidera el cálculo métrico y la gestión de riesgos a nivel institucional. Acoplado a un frontend multi-perfil, permite el control del flujo de datos en caliente y ejecución de configuraciones estrictas como *Factory Resets* sin perder el uptime de las transacciones operativas.
 
 <br><hr><br>
 
-### 🛒 [Ecosistema Backoffice TecStore](./TecStore-CaseStudy.md) 🔒
-
-<p align="center">
+<div align="center">
   <a href="./TecStore-CaseStudy.md">
-    <!-- Reemplazar el src por la ruta de tu screenshot real del proyecto -->
-    <img src="./images/preview.png" alt="Screenshot TecStore" width="100%" style="border-radius: 10px;"/>
+    <img src="./images/tecstoreportada.gif" alt="TecStore Backoffice" width="100%" style="border-radius:10px;"/>
   </a>
-</p>
+</div>
 
-Suite propietaria de operaciones e-commerce para [TecStore Argentina](https://tecstorearg.com/). *(Software Privado)*.
-- **Logística:** Módulo de seguimiento en tiempo real y estados.
-- **Finanzas:** Sistema algorítmico de cálculo y asiento automático de "Caja Parada" e intereses para socios.
-- **Arquitectura:** Bypass de WAF vía proxy serverless para sincronización masiva de inventario con MercadoLibre, actuando de nexo entre Shopify y Google Sheets.
+### [🛒 TecStore E-commerce Backoffice](./TecStore-CaseStudy.md) 🔒
+> **Tecnologías:** Node.js, Google Apps Script, Shopify, MercadoLibre API | **Estado:** Privado Empresarial
 
-> 📄 *[Leer el Caso de Estudio Completo sobre la infraestructura TecStore](./TecStore-CaseStudy.md)*
+Ecosistema de infraestructura de backend (B2B) diseñado exclusivamente para **TecStore Argentina**. Centraliza la gobernanza operativa de la empresa automatizando múltiples pilares comerciales:
+- **Core Contable Automático:** Asientos matemáticos para control de saldos y devengo de penalidades.
+- **Logística Inteligente:** Integración multi-nodo de tracking de despachos con notificaciones *push* a clientes vía WhatsApp.
+- **Syncer Masivo de Inventario:** Plataforma proxy serverless que enruta y sincroniza volumetrías de stock con el marketplace evadiendo latencias restrictivas (WAF bypass).
+
+> 📄 *[Sumergite en el Caso de Estudio de esta infraestructura tecnológica](./TecStore-CaseStudy.md).*
 
 <br>
 
@@ -105,9 +80,8 @@ Suite propietaria de operaciones e-commerce para [TecStore Argentina](https://te
 |----------|-------------|-------------|
 | 🧾 [**Bot de WhatsApp para registrar gastos**](https://github.com/auwus21/whatsapp-ticket-bot) | Recibe tickets por WhatsApp (texto o imagen), los analiza con IA y los carga en Google Sheets. | `whatsapp-web.js`, `Tesseract.js`, `Google Sheets API`, `Gemini`, `Node.js` |
 | 📦 [**Gestor de Pedidos para Empleados**](https://github.com/auwus21/whatsapp-pedidos-empleados) | Sistema de consulta y avisos por WhatsApp que avisa automáticamente a empleados cuándo llegan productos o hay saldo pendiente. | `Node.js`, `Google Sheets`, `Railway`, `whatsapp-web.js` |
-| 🎰 [**Ruleta React Promocional**](https://github.com/auwus21/ruleta-promocional-react) | Ruleta interactiva para campañas promocionales. Valida código + pedido, muestra premios animados y registra todo en automatizado. | `React`, `Vite`, `Tailwind`, `Framer Motion` |
-| 📦 [**Seguimiento de envíos (TecStore)**](https://github.com/auwus21/tracking-tecstore-md) | Web pública para que el cliente consulte el estado de su pedido con el número. Integrado a DB y animado. | `React`, `Vite`, `Framer Motion` |
-| 🛒 [**Sitio web TecStore**](https://tecstorearg.com/) | E-commerce desarrollado y conectado a microservicios logísticos en tiempo real. | `Shopify`, `Node.js` |
+| 🎰 [**Ruleta React Promocional**](https://github.com/auwus21/ruleta-promocional-react) | Ruleta interactiva para campañas promocionales. Valida código + pedido, muestra premios animados y registra automatizado en DB. | `React`, `Vite`, `Tailwind CSS`, `Framer Motion` |
+| 📦 [**Seguimiento de envíos para clientes**](https://github.com/auwus21/tracking-tecstore-md) | App web pública donde el usuario ingresa su código y el frontend impacta contra el warehoue logístico para trackearlo remotamente. | `React`, `Vite`, `Tailwind CSS`, `Framer Motion` |
 | 🧾 [**Marketplace Descentralizado**](https://github.com/TP-Seminario-de-Lenguajes-Rust-2025/marketplacedescentralizado) | Plataforma Web3 e-commerce sobre blockchain construida en Rust. Contratos inteligentes de calificación y perfiles. | `Rust`, `Ink!`, `Substrate` |
 
 ---
