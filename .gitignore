@@ -1,0 +1,7 @@
+# Python
+__pycache__/
+*.py[cod]
+
+# Salidas generadas por scripts/epicodes_ranking.py
+mas_vendidos.txt
+mas_vendidos.csv
