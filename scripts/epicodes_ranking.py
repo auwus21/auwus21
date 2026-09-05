@@ -25,6 +25,7 @@ import argparse
 import csv
 import html
 import json
+import os
 import re
 import sys
 import time
@@ -133,6 +134,34 @@ def buscar_precio(texto):
     return precios[-1].replace(" ", "") if precios else ""
 
 
+def descargar_crudo(url, timeout=20):
+    """Baja cualquier cosa como texto, sin filtrar por content-type."""
+    req = urllib.request.Request(url, headers={"User-Agent": UA})
+    with urllib.request.urlopen(req, timeout=timeout) as r:
+        return r.read(3_000_000).decode("utf-8", errors="replace")
+
+
+def leer_sitemap(base):
+    """Devuelve las URLs listadas en sitemap.xml, si el sitio tiene."""
+    urls = []
+    for ruta in ("/sitemap.xml", "/sitemap_index.xml", "/sitemap-0.xml"):
+        try:
+            doc = descargar_crudo(urllib.parse.urljoin(base, ruta))
+        except Exception:  # noqa: BLE001
+            continue
+        locs = re.findall(r"<loc>\s*([^<\s]+)\s*</loc>", doc or "", re.IGNORECASE)
+        for u in locs:
+            if u.lower().endswith(".xml"):  # sitemap index: apunta a otros
+                try:
+                    sub = descargar_crudo(u)
+                except Exception:  # noqa: BLE001
+                    continue
+                urls += re.findall(r"<loc>\s*([^<\s]+)\s*</loc>", sub or "", re.IGNORECASE)
+            else:
+                urls.append(u)
+    return urls
+
+
 def descargar(url, timeout=20):
     req = urllib.request.Request(url, headers={"User-Agent": UA, "Accept": "text/html"})
     with urllib.request.urlopen(req, timeout=timeout) as r:
@@ -151,28 +180,78 @@ def descargar(url, timeout=20):
     return doc
 
 
-def hacer_render(urls, delay):
-    """Renderiza cada URL con Playwright y devuelve {url: html}."""
-    try:
-        from playwright.sync_api import sync_playwright
-    except ImportError:
-        sys.exit(
-            "Falta Playwright para --render.\n"
-            "  pip install playwright && playwright install chromium"
-        )
-    salida = {}
-    with sync_playwright() as p:
-        navegador = p.chromium.launch()
-        pagina = navegador.new_page(user_agent=UA)
-        for u in urls:
-            try:
-                pagina.goto(u, wait_until="networkidle", timeout=30000)
-                salida[u] = pagina.content()
-            except Exception as e:  # noqa: BLE001
-                print(f"  ! no se pudo renderizar {u}: {e}", file=sys.stderr)
-            time.sleep(delay)
-        navegador.close()
-    return salida
+def buscar_chromium():
+    """Busca un Chromium/Chrome ya instalado en el sistema."""
+    candidatos = []
+    raiz = os.environ.get("PLAYWRIGHT_BROWSERS_PATH")
+    if raiz and os.path.isdir(raiz):
+        for base, _dirs, archivos in os.walk(raiz):
+            for a in archivos:
+                if a in ("chrome", "headless_shell", "chrome-headless-shell"):
+                    candidatos.append(os.path.join(base, a))
+    candidatos += [
+        "/usr/bin/chromium", "/usr/bin/chromium-browser", "/usr/bin/google-chrome",
+        "/snap/bin/chromium",
+        "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+        "/Applications/Chromium.app/Contents/MacOS/Chromium",
+        r"C:\Program Files\Google\Chrome\Application\chrome.exe",
+    ]
+    for c in candidatos:
+        if os.path.exists(c) and os.access(c, os.X_OK):
+            return c
+    return None
+
+
+class Navegador:
+    """De donde salen las paginas: urllib por defecto, Chromium con --render."""
+
+    def __init__(self, render, chrome_path=None):
+        self.render = render
+        self._pw = self._nav = self._pagina = None
+        if not render:
+            return
+        try:
+            from playwright.sync_api import sync_playwright
+        except ImportError:
+            sys.exit(
+                "Falta Playwright para --render.\n"
+                "  pip install playwright && playwright install chromium"
+            )
+        self._pw = sync_playwright().start()
+        try:
+            self._nav = self._pw.chromium.launch(executable_path=chrome_path)
+        except Exception as e:  # noqa: BLE001
+            # tipico: la version de Playwright no coincide con el navegador bajado.
+            # Reintentamos con cualquier Chrome/Chromium que haya en el sistema.
+            alterno = chrome_path or buscar_chromium()
+            if not alterno:
+                self._pw.stop()
+                sys.exit(
+                    "No se pudo abrir Chromium: {}\n"
+                    "Instalalo con:  playwright install chromium\n"
+                    "O pasale uno ya instalado:  --chrome-path /ruta/al/chrome".format(e)
+                )
+            print("  (usando Chromium del sistema: {})".format(alterno), file=sys.stderr)
+            self._nav = self._pw.chromium.launch(executable_path=alterno)
+        self._pagina = self._nav.new_page(user_agent=UA)
+
+    def obtener(self, url):
+        if not self.render:
+            return descargar(url)
+        # networkidle espera a que el JS termine de pedir datos
+        self._pagina.goto(url, wait_until="networkidle", timeout=45000)
+        return self._pagina.content()
+
+    def cerrar(self):
+        if self._nav:
+            self._nav.close()
+        if self._pw:
+            self._pw.stop()
+
+
+def es_asset(url):
+    """True para .css, .js, imagenes, etc. Mira el path: ignora ?v=abc123."""
+    return urllib.parse.urlparse(url).path.lower().endswith(SKIP_EXT)
 
 
 def es_interna(url, host):
@@ -185,41 +264,52 @@ def normalizar(url):
     return urllib.parse.urlunparse((p.scheme, p.netloc, p.path or "/", "", p.query, ""))
 
 
-def recorrer(base, max_pages, delay, render):
+def recorrer(base, max_pages, delay, render, chrome_path=None):
     host = urllib.parse.urlparse(base).netloc
     pendientes = deque([normalizar(base)])
-    vistas = set()
-    docs = {}
 
-    while pendientes and len(vistas) < max_pages:
-        url = pendientes.popleft()
-        if url in vistas:
-            continue
-        vistas.add(url)
-        try:
-            doc = descargar(url)
-        except (urllib.error.URLError, urllib.error.HTTPError, OSError) as e:
-            print(f"  ! {url}: {e}", file=sys.stderr)
-            continue
-        if not doc:
-            continue
-        docs[url] = doc
-        print(f"  . {len(vistas):3d}/{max_pages} {url}", file=sys.stderr)
+    semillas = [normalizar(u) for u in leer_sitemap(base)]
+    semillas = [u for u in semillas if es_interna(u, host) and not es_asset(u)]
+    if semillas:
+        print("  sitemap.xml: {} URLs".format(len(semillas)), file=sys.stderr)
+        pendientes.extend(semillas)
 
-        for href in RE_HREF.findall(doc):
-            destino = normalizar(urllib.parse.urljoin(url, href.strip()))
-            if not es_interna(destino, host):
+    nav = Navegador(render, chrome_path)
+    vistas, docs, con_dato = set(), {}, 0
+    try:
+        while pendientes and len(vistas) < max_pages:
+            url = pendientes.popleft()
+            if url in vistas:
                 continue
-            if destino.lower().endswith(SKIP_EXT):
+            vistas.add(url)
+            try:
+                doc = nav.obtener(url)
+            except Exception as e:  # noqa: BLE001
+                print("  ! {}: {}".format(url, e), file=sys.stderr)
                 continue
-            if destino not in vistas:
-                pendientes.append(destino)
-        time.sleep(delay)
+            if not doc:
+                continue
+            docs[url] = doc
 
-    if render:
-        print(f"\nRenderizando {len(docs)} paginas con Playwright...", file=sys.stderr)
-        docs.update(hacer_render(list(docs), delay))
+            hallado = buscar_entregadas(doc, a_texto(doc)) is not None
+            con_dato += hallado
+            print(
+                "  {} {:3d}/{} {}".format("*" if hallado else ".", len(vistas), max_pages, url),
+                file=sys.stderr,
+            )
 
+            for href in RE_HREF.findall(doc):
+                destino = normalizar(urllib.parse.urljoin(url, href.strip()))
+                if es_interna(destino, host) and not es_asset(destino) and destino not in vistas:
+                    pendientes.append(destino)
+            time.sleep(delay)
+    finally:
+        nav.cerrar()
+
+    print(
+        "\n{} paginas leidas, {} con contador de entregadas".format(len(docs), con_dato),
+        file=sys.stderr,
+    )
     return docs
 
 
@@ -286,18 +376,22 @@ def main():
     ap.add_argument("--max-pages", type=int, default=400)
     ap.add_argument("--delay", type=float, default=0.5)
     ap.add_argument("--render", action="store_true")
+    ap.add_argument("--chrome-path", default=None,
+                    help="ruta a un Chrome/Chromium ya instalado (para --render)")
     args = ap.parse_args()
 
     print("Recorriendo {} ...".format(args.base), file=sys.stderr)
-    docs = recorrer(args.base, args.max_pages, args.delay, args.render)
+    docs = recorrer(args.base, args.max_pages, args.delay, args.render, args.chrome_path)
     filas = extraer(docs)
 
     if not filas:
-        print(
-            "\nNo se encontro ningun contador de 'entregadas' en {} paginas.\n"
-            "Si el sitio carga el contenido con JavaScript, volve a correrlo con --render".format(len(docs)),
-            file=sys.stderr,
-        )
+        if args.render:
+            ayuda = ("Ya se uso --render, asi que el contador no esta en el HTML renderizado.\n"
+                     "Proba apuntar directo al catalogo, por ejemplo:\n"
+                     "  python3 epicodes_ranking.py --render --base https://epicodes.com.ar/ps5")
+        else:
+            ayuda = "El sitio arma el contenido con JavaScript. Corrrelo de nuevo con --render"
+        print("\nNo se encontro ningun contador de 'entregadas'.\n" + ayuda, file=sys.stderr)
         sys.exit(1)
 
     total = escribir_txt(filas, args.out, args.base)
