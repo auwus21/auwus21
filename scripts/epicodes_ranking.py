@@ -17,8 +17,9 @@ Opciones utiles:
     --render          renderiza con Playwright (usalo si el sitio es una SPA y
                       el modo normal no encuentra nada)
 
-Solo necesita Python 3.8+. El modo --render necesita:
-    pip install playwright && playwright install chromium
+Solo necesita Python 3.8+. El modo --render necesita (en Mac suele ser pip3 o python3 -m pip):
+    python3 -m pip install playwright
+    python3 -m playwright install chromium
 """
 
 import argparse
@@ -214,8 +215,9 @@ class Navegador:
             from playwright.sync_api import sync_playwright
         except ImportError:
             sys.exit(
-                "Falta Playwright para --render.\n"
-                "  pip install playwright && playwright install chromium"
+                "Falta Playwright para --render. Instalalo con:\n"
+                "  python3 -m pip install playwright\n"
+                "  python3 -m playwright install chromium"
             )
         self._pw = sync_playwright().start()
         try:
@@ -228,7 +230,7 @@ class Navegador:
                 self._pw.stop()
                 sys.exit(
                     "No se pudo abrir Chromium: {}\n"
-                    "Instalalo con:  playwright install chromium\n"
+                    "Instalalo con:  python3 -m playwright install chromium\n"
                     "O pasale uno ya instalado:  --chrome-path /ruta/al/chrome".format(e)
                 )
             print("  (usando Chromium del sistema: {})".format(alterno), file=sys.stderr)
@@ -273,6 +275,13 @@ def recorrer(base, max_pages, delay, render, chrome_path=None):
     if semillas:
         print("  sitemap.xml: {} URLs".format(len(semillas)), file=sys.stderr)
         pendientes.extend(semillas)
+        # si el sitemap trae mas paginas que el limite, nos quedariamos a medias
+        if len(semillas) + 1 > max_pages:
+            max_pages = len(semillas) + 50
+            print(
+                "  subo el limite a {} paginas para cubrir todo el sitemap".format(max_pages),
+                file=sys.stderr,
+            )
 
     nav = Navegador(render, chrome_path)
     vistas, docs, con_dato = set(), {}, 0
