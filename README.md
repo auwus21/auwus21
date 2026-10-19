@@ -1,166 +1,190 @@
-<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=0:0D1117,50:161B22,100:0D1117&height=220&section=header&text=Agustín%20Olthoff&fontColor=58A6FF&fontSize=42&fontAlignY=35&desc=Desarrollador%20Software%20·%20Emprendedor%20·%20Estudiante%20de%20Sistemas&descAlignY=55&descSize=16&descColor=8B949E&animation=fadeIn"/>
-
 <div align="center">
-
-<br>
-
-<a href="https://portfolio-agustin-olthoff.vercel.app/" target="_blank">
-  <img src="https://img.shields.io/badge/Portfolio-58A6FF?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Portfolio"/>
-</a>
-<a href="https://www.linkedin.com/in/agustin-olthoff-961147272/">
-  <img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"/>
-</a>
-<a href="mailto:agusolthoff2002@gmail.com">
-  <img src="https://img.shields.io/badge/Email-EA4335?style=for-the-badge&logo=gmail&logoColor=white" alt="Email"/>
-</a>
-<a href="https://tecstorearg.com">
-  <img src="https://img.shields.io/badge/TecStore-000000?style=for-the-badge&logo=shopify&logoColor=96BF48" alt="TecStore"/>
-</a>
-<a href="https://www.instagram.com/tecstore.arg/">
-  <img src="https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white" alt="Instagram"/>
-</a>
-
-<br><br>
-
-<img src="https://komarev.com/ghpvc/?username=auwus21&label=Visitas%20al%20perfil&color=58A6FF&style=flat-square" alt="Visitas al perfil" />
-
+  <img src="./images/header.svg" width="100%" alt="Agustín Olthoff — CTO en TecStore · Full-Stack Developer · UNLP" />
 </div>
 
----
-
-## 🚀 Proyectos Destacados
-
 <br>
 
 <div align="center">
-  <a href="https://github.com/auwus21/cpu-scheduler-sim">
-    <img src="./images/cpusim.gif" alt="CPU Scheduler Simulator" width="90%"/>
+  <a href="https://tecno.tecstore.lat/" target="_blank">
+    <img src="https://img.shields.io/badge/TecStore_Tecnolog%C3%ADa-161B22?style=flat-square&logo=apple&logoColor=white" alt="TecStore Tecnología"/>
+  </a>
+  &nbsp;
+  <a href="https://tecstore.lat/ar" target="_blank">
+    <img src="https://img.shields.io/badge/TecStore_Games-161B22?style=flat-square&logo=playstation&logoColor=58A6FF" alt="TecStore Games"/>
+  </a>
+  &nbsp;
+  <a href="https://www.laplatareporta.com/" target="_blank">
+    <img src="https://img.shields.io/badge/La_Plata_Reporta-161B22?style=flat-square&logo=openstreetmap&logoColor=3ECF8E" alt="La Plata Reporta"/>
+  </a>
+  &nbsp;
+  <a href="https://portfolio-agustin-olthoff.vercel.app/" target="_blank">
+    <img src="https://img.shields.io/badge/Portfolio_Web-161B22?style=flat-square&logo=vercel&logoColor=white" alt="Portfolio"/>
+  </a>
+  &nbsp;
+  <a href="https://www.linkedin.com/in/agustin-olthoff-961147272/" target="_blank">
+    <img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=flat-square&logo=linkedin&logoColor=white" alt="LinkedIn"/>
+  </a>
+  &nbsp;
+  <a href="mailto:agusolthoff2002@gmail.com">
+    <img src="https://img.shields.io/badge/agusolthoff2002%40gmail.com-161B22?style=flat-square&logo=gmail&logoColor=EA4335" alt="Email"/>
   </a>
 </div>
 
 <br>
 
-<div align="center">
-
-### 🖥️ [`CPU Scheduler Simulator`](https://github.com/auwus21/cpu-scheduler-sim)
-
-![React](https://img.shields.io/badge/React-20232A?style=flat-square&logo=react&logoColor=61DAFB)
-![Vite](https://img.shields.io/badge/Vite-646CFF?style=flat-square&logo=vite&logoColor=white)
-![GitHub Pages](https://img.shields.io/badge/Deploy-GitHub%20Pages-222?style=flat-square&logo=github&logoColor=white)
-
-</div>
-
-> **Motor de simulación interactivo en tiempo real** para algoritmos de planificación de CPU (FCFS, SJF, Round Robin, Priority). Diseñado como herramienta educativa, ofrece una interfaz completamente reactiva para personalizar ráfagas, tiempos de llegada y prioridades — con un **diagrama de Gantt dinámico** y métricas de rendimiento en vivo. Desplegado en GitHub Pages.
-
-<br>
+Estudio **Licenciatura en Sistemas** en la **Facultad de Informática (UNLP)** y soy socio y **CTO de [TecStore Argentina](https://tecno.tecstore.lat/)**. Empecé programando herramientas para automatizar el día a día de mi propio negocio y terminé desarrollando desde cero el sistema de gestión (ERP), las tiendas online y los bots con los que hoy operamos nuestras **3 sucursales físicas** (**Buenos Aires CABA**, **La Plata** y **Villa Minetti, Santa Fe**).
 
 ---
 
-<br>
+### Sistemas en producción y proyectos propios
 
-<div align="center">
-  <a href="https://github.com/auwus21/BotTrading">
-    <img src="./images/trading.png" alt="Trading Bot" width="90%"/>
-  </a>
-</div>
+<table>
+  <tr>
+    <td width="54%" valign="top">
+      <h4><a href="./TecStore-CaseStudy.md">TecStore Tecnología — ERP &amp; Tienda Web</a></h4>
+      <p>
+        <code>Next.js 14</code> · <code>React 19</code> · <code>TypeScript</code> · <code>Supabase</code> · <code>Tailwind</code>
+      </p>
+      <p>
+        Sistema de gestión interno y tienda e-commerce que desarrollé como CTO para unificar la operación de nuestras tres sucursales físicas y el canal online (+300K seguidores).
+      </p>
+      <ul>
+        <li>Control de stock por sucursal y por lotes, punto de venta (POS) y seguimiento de envíos en vivo.</li>
+        <li>Módulo contable para socios, cotizador de iPhones usados en parte de pago y programa de puntos (TecPoints).</li>
+      </ul>
+      <p>
+        <a href="./TecStore-CaseStudy.md"><b>Leer arquitectura y caso de estudio →</b></a>
+        &nbsp;·&nbsp;
+        <a href="https://tecno.tecstore.lat/">tecno.tecstore.lat</a>
+      </p>
+    </td>
+    <td width="46%" valign="middle" align="center">
+      <a href="./TecStore-CaseStudy.md">
+        <img src="./images/tecstoreportada.gif" alt="TecStore Tecnología" width="100%"/>
+      </a>
+    </td>
+  </tr>
 
-<br>
+  <tr>
+    <td width="54%" valign="top">
+      <h4><a href="./TecStore-Games-CaseStudy.md">TecStore Games — E-Commerce Multi-País</a></h4>
+      <p>
+        <code>React</code> · <code>Vite</code> · <code>PostgreSQL</code> · <code>Edge Functions</code> · <code>Node.js</code>
+      </p>
+      <p>
+        Tienda online regional (Argentina y LATAM) para la venta de videojuegos digitales de PS4 y PS5, conectada a un panel propio de administración y entregas automatizadas.
+      </p>
+      <ul>
+        <li>Catálogo con precios localizados por país, buscador con soporte de alias/siglas, cajas misteriosas y referidos.</li>
+        <li>Sincronización automática de ofertas y bots en Node.js que entregan los pedidos por WhatsApp las 24 hs.</li>
+      </ul>
+      <p>
+        <a href="./TecStore-Games-CaseStudy.md"><b>Leer arquitectura y caso de estudio →</b></a>
+        &nbsp;·&nbsp;
+        <a href="https://tecstore.lat/ar">tecstore.lat/ar</a>
+      </p>
+    </td>
+    <td width="46%" valign="middle" align="center">
+      <a href="./TecStore-Games-CaseStudy.md">
+        <img src="./images/tecstore-games-card.png" alt="TecStore Games" width="100%"/>
+      </a>
+    </td>
+  </tr>
 
-<div align="center">
+  <tr>
+    <td width="54%" valign="top">
+      <h4><a href="./LaPlataReporta-CaseStudy.md">La Plata Reporta — Observatorio Urbano</a></h4>
+      <p>
+        <code>Next.js 14</code> · <code>TypeScript</code> · <code>Leaflet</code> · <code>Turf.js</code> · <code>Supabase</code>
+      </p>
+      <p>
+        Plataforma web abierta para que los vecinos de La Plata puedan registrar, geolocalizar y hacer seguimiento de problemas urbanos barrio por barrio.
+      </p>
+      <ul>
+        <li>Mapa interactivo con capas barriales, detección espacial de reportes cercanos, mapas de calor y estadísticas públicas.</li>
+        <li>Sistema de validación comunitaria, propuestas vecinales y avisos de avance por notificaciones Push y mail.</li>
+      </ul>
+      <p>
+        <a href="./LaPlataReporta-CaseStudy.md"><b>Leer arquitectura y caso de estudio →</b></a>
+        &nbsp;·&nbsp;
+        <a href="https://www.laplatareporta.com/">laplatareporta.com</a>
+      </p>
+    </td>
+    <td width="46%" valign="middle" align="center">
+      <a href="./LaPlataReporta-CaseStudy.md">
+        <img src="./images/laplatareporta-card.png" alt="La Plata Reporta" width="100%"/>
+      </a>
+    </td>
+  </tr>
 
-### 📈 [`Arquitectura de Trading Institucional`](https://github.com/auwus21/BotTrading)
+  <tr>
+    <td width="54%" valign="top">
+      <h4><a href="https://github.com/AgustinOlthoff/cpu-scheduler-sim">CPU Scheduler Simulator — Sistemas Operativos (UNLP)</a></h4>
+      <p>
+        <code>React 18</code> · <code>Vite</code> · <code>CSS</code> · <code>Vercel</code>
+      </p>
+      <p>
+        Simulador web que armé para practicar los algoritmos de planificación de CPU de la materia <b>Introducción a los Sistemas Operativos (ISO)</b> de la facultad.
+      </p>
+      <ul>
+        <li>Permite correr 7 variantes (FCFS, SJF, SRTF, Round Robin y Prioridades) sumando interrupciones de Entrada/Salida (DMA).</li>
+        <li>Dibuja el diagrama de Gantt paso a paso, muestra la cola de listos y calcula Tiempo de Retorno y de Espera.</li>
+      </ul>
+      <p>
+        <a href="https://github.com/AgustinOlthoff/cpu-scheduler-sim"><b>Ver código en GitHub →</b></a>
+        &nbsp;·&nbsp;
+        <a href="https://cpu-scheduler-sim-two.vercel.app">Probar simulador</a>
+      </p>
+    </td>
+    <td width="46%" valign="middle" align="center">
+      <a href="https://github.com/AgustinOlthoff/cpu-scheduler-sim">
+        <img src="./images/cpusim.gif" alt="CPU Scheduler Simulator" width="100%"/>
+      </a>
+    </td>
+  </tr>
 
-![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
-![React](https://img.shields.io/badge/React-20232A?style=flat-square&logo=react&logoColor=61DAFB)
-![REST API](https://img.shields.io/badge/REST-API-FF6C37?style=flat-square&logo=postman&logoColor=white)
-
-</div>
-
-> **Sistema de automatización de trading algorítmico** con arquitectura multi-perfil y gestión de riesgos de grado institucional. El backend en Python maneja cálculos métricos y controles estrictos de riesgo, mientras que el dashboard frontend en React provee monitoreo del flujo de datos en tiempo real y configuraciones intercambiables en caliente — incluyendo funcionalidades de **Factory Reset** sin comprometer el uptime operativo.
-
-<br>
+  <tr>
+    <td width="54%" valign="top">
+      <h4><a href="https://github.com/AgustinOlthoff/BotTrading">Bot de Trading Algorítmico &amp; Dashboard</a></h4>
+      <p>
+        <code>Python</code> · <code>React</code> · <code>Lightweight Charts</code> · <code>Telegram API</code>
+      </p>
+      <p>
+        Sistema automatizado en Python para operar futuros en Binance con distintos perfiles de riesgo en paralelo y un panel web local para monitorear métricas.
+      </p>
+      <ul>
+        <li>Cálculo dinámico de tamaño de posición, filtros de volatilidad/tendencia (ADX, EMA, RSI, VWAP) y control de drawdown.</li>
+        <li>Panel en React con gráficos en vivo y bot de Telegram para consultar estado o pausar estrategias desde el celular.</li>
+      </ul>
+      <p>
+        <a href="https://github.com/AgustinOlthoff/BotTrading"><b>Ver código en GitHub →</b></a>
+      </p>
+    </td>
+    <td width="46%" valign="middle" align="center">
+      <a href="https://github.com/AgustinOlthoff/BotTrading">
+        <img src="./images/trading-card.png" alt="Trading Bot" width="100%"/>
+      </a>
+    </td>
+  </tr>
+</table>
 
 ---
 
-<br>
+### Otros repositorios y herramientas
 
-<div align="center">
-  <a href="./TecStore-CaseStudy.md">
-    <img src="./images/tecstoreportada.gif" alt="TecStore Backoffice" width="90%"/>
-  </a>
-</div>
-
-<br>
-
-<div align="center">
-
-### 🛒 [`TecStore E-commerce Backoffice`](./TecStore-CaseStudy.md) 🔒
-
-![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=nodedotjs&logoColor=white)
-![Google Apps Script](https://img.shields.io/badge/Apps%20Script-4285F4?style=flat-square&logo=google&logoColor=white)
-![Shopify](https://img.shields.io/badge/Shopify-96BF48?style=flat-square&logo=shopify&logoColor=white)
-![Private](https://img.shields.io/badge/Estado-Privado%20Empresarial-red?style=flat-square&logo=lock&logoColor=white)
-
-</div>
-
-> **Infraestructura propietaria de operaciones B2B** que impulsa [TecStore Argentina](https://tecstorearg.com/) — una de las marcas líderes de e-commerce tech en Argentina con **+300K seguidores**. El ecosistema automatiza la gestión financiera (asientos automáticos, seguimiento de penalidades, cálculo de intereses entre socios), logística inteligente (tracking multi-nodo con notificaciones push vía WhatsApp) y un **syncer de inventario serverless** que enruta stock entre Shopify y MercadoLibre evitando restricciones WAF.
-
-<div align="center">
-
-**[📄 Leer el Caso de Estudio Técnico Completo →](./TecStore-CaseStudy.md)**
-
-</div>
-
-<br>
+| Repositorio | Qué hace | Stack |
+| :--- | :--- | :--- |
+| [**quotadeck-ai**](https://github.com/AgustinOlthoff/quotadeck-ai) | App de escritorio liviana para monitorear el consumo de cuota en editores con IA y cambiar de cuenta en un clic. | `Tauri` `Rust` `TypeScript` `React` |
+| [**marketplacedescentralizado**](https://github.com/TP-Seminario-de-Lenguajes-Rust-2025/marketplacedescentralizado) | Trabajo final del Seminario de Lenguajes (UNLP): marketplace en blockchain con contratos inteligentes. | `Rust` `Ink!` `Substrate` |
+| [**whatsapp-ticket-bot**](https://github.com/AgustinOlthoff/whatsapp-ticket-bot) | Bot que recibe fotos de comprobantes o tickets por WhatsApp, lee los montos con OCR + Gemini y los pasa a Google Sheets. | `Node.js` `Gemini API` `Tesseract.js` |
+| [**whatsapp-pedidos-empleados**](https://github.com/AgustinOlthoff/whatsapp-pedidos-empleados) | Automatización interna para avisar por WhatsApp cuando llegan pedidos al depósito y llevar control de saldos. | `Node.js` `Google Sheets API` |
+| [**ruleta-promocional-react**](https://github.com/AgustinOlthoff/ruleta-promocional-react) | Módulo web de ruleta de premios validada por número de orden de compra para campañas de clientes. | `React` `Vite` `Tailwind` `Framer Motion` |
+| [**tracking-tecstore-md**](https://github.com/AgustinOlthoff/tracking-tecstore-md) | Primera versión standalone del portal de seguimiento de envíos para clientes de TecStore. | `React` `Vite` `Framer Motion` |
 
 ---
 
-## 📦 Otros Proyectos
-
-<details>
-<summary><b>🔍 Click para expandir</b></summary>
-<br>
-
-| | Proyecto | Descripción | Stack |
-|:-:|---------|-------------|-------|
-| 🧾 | [**Bot de WhatsApp para registrar gastos**](https://github.com/auwus21/whatsapp-ticket-bot) | Recibe tickets por WhatsApp (texto o imagen), los analiza con IA (Gemini + OCR) y los carga automáticamente en Google Sheets. | `Node.js` `Gemini` `Tesseract.js` |
-| 📦 | [**Gestor de Pedidos para Empleados**](https://github.com/auwus21/whatsapp-pedidos-empleados) | Sistema automatizado de notificaciones por WhatsApp que avisa a empleados sobre llegada de productos y saldos pendientes. | `Node.js` `Google Sheets` `Railway` |
-| 🎰 | [**Ruleta Promocional**](https://github.com/auwus21/ruleta-promocional-react) | Ruleta interactiva para campañas promocionales con validación de código, premios animados y registro automatizado en DB. | `React` `Vite` `Tailwind` `Framer Motion` |
-| 📍 | [**Seguimiento de Envíos**](https://github.com/auwus21/tracking-tecstore-md) | App web pública donde los clientes rastrean sus pedidos en tiempo real contra el warehouse logístico. | `React` `Vite` `Framer Motion` |
-| ⛓️ | [**Marketplace Descentralizado**](https://github.com/TP-Seminario-de-Lenguajes-Rust-2025/marketplacedescentralizado) | Plataforma Web3 de e-commerce sobre blockchain con contratos inteligentes de calificación y perfiles de usuario. | `Rust` `Ink!` `Substrate` |
-| 🛒 | [**Sitio Web TecStore**](https://tecstorearg.com/) | E-commerce completo conectado a microservicios de logística e inventario en tiempo real. | `Shopify` `Google Apps Script` |
-
-</details>
-
----
-
-## 🧠 Sobre mí
-
-- 👨‍💼 Actual dueño de [**Tec Store Argentina**](https://www.instagram.com/tecstore.arg/) (desde 2024), una de las tiendas tech líderes de Argentina con **+300.000 seguidores** en Instagram.
-- 🧩 Poseo un perfil híbrido: desarrollo soluciones técnicas enfocadas al **escalado del negocio real**.
-- 🧾 Especialista en automatización, logística, sincronización cross-plataforma (Shopify / ML) y dashboards de administración B2B/B2C.
-- 💡 Estudiante de la Licenciatura en Sistemas.
-
----
-
-## ⚡ Tecnologías
+### Stack con el que trabajo a diario
 
 <div align="center">
-  <a href="https://skillicons.dev">
-    <img src="https://skillicons.dev/icons?i=react,nodejs,js,java,python,rust,supabase,postgres,vercel&theme=dark&perline=9" alt="Tech Stack"/>
-  </a>
+  <img src="https://skillicons.dev/icons?i=ts,js,python,rust,java,react,nextjs,vite,tailwind,nodejs,supabase,postgres,vercel,linux,git,github&theme=dark&perline=16" alt="Tech Stack"/>
 </div>
-
----
-
-<div align="center">
-
-<br>
-
-*"No se trata solo de programar, sino de construir la infraestructura que hace funcionar los negocios."*
-
-<br>
-
-</div>
-
-<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=0:0D1117,50:161B22,100:0D1117&height=120&section=footer"/>
